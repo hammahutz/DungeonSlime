@@ -1,4 +1,5 @@
-﻿using DungeonSlime.Library;
+﻿using System;
+using DungeonSlime.Library;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,6 +14,7 @@ public class Game1 : Core
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
+        Console.WriteLine("Hello");
 
         base.Initialize();
     }
