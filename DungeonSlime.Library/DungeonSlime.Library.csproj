@@ -7,7 +7,4 @@
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DungeonSlime.Library\DungeonSlime.Library.csproj" />
-  </ItemGroup>
 </Project>
