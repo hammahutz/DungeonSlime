@@ -48,6 +48,9 @@ public class Game1 : Core
 
         SpriteBatch.Begin();
         SpriteBatch.DrawString(_font, "Hello World", new Vector2(100, 100), Color.White);
+        #if OPENGL
+        SpriteBatch.DrawString(_font, "OpenGL", new Vector2(132, 135), Color.Blue);
+        #endif
         SpriteBatch.End();
 
         base.Draw(gameTime);
