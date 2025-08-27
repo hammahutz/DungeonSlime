@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
@@ -30,8 +30,7 @@
     <ProjectReference Include="..\DungeonSlime\DungeonSlime.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="..\DungeonSlime.Content\Content.mgcb"
-      Link="Content\Content.mgcb" />
+    <MonoGameContentReference Include="..\DungeonSlime.Content\Content.mgcb" Link="Content\Content.mgcb" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
