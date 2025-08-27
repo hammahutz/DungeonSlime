@@ -25,7 +25,10 @@ public class Core : Game
     {
         SetInstance();
         SetWindow(width, height, fullScreen, title);
+        SetContent();
+        IsMouseVisible = true;
     }
+
 
     private void SetInstance()
     {
@@ -48,6 +51,12 @@ public class Core : Game
         Graphics.ApplyChanges();
 
         Window.Title = title;
+    }
+
+    private void SetContent()
+    {
+        Content = base.Content;
+        Content.RootDirectory = "Content";
     }
 
     protected override void Initialize()
