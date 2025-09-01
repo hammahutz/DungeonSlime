@@ -1,7 +1,5 @@
 ﻿using System;
-
 using DungeonSlime.Library;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,6 +9,8 @@ namespace DungeonSlime;
 public class Game1 : Core
 {
     private SpriteFont _font;
+    private Texture2D _logo;
+
     public Game1()
         : base("DungeonSlime") { }
 
@@ -24,9 +24,8 @@ public class Game1 : Core
 
     protected override void LoadContent()
     {
-
-        _font = Content.Load<SpriteFont>("font");
-
+        _font = Content.Load<SpriteFont>("Fonts/Font");
+        _logo = Content.Load<Texture2D>("Images/Logo");
     }
 
     protected override void Update(GameTime gameTime)
@@ -48,9 +47,11 @@ public class Game1 : Core
 
         SpriteBatch.Begin();
         SpriteBatch.DrawString(_font, "Hello World", new Vector2(100, 100), Color.White);
-        #if OPENGL
+#if OPENGL
         SpriteBatch.DrawString(_font, "OpenGL", new Vector2(132, 135), Color.Blue);
-        #endif
+#endif
+
+        SpriteBatch.Draw(_logo, Vector2.Zero, Color.White);
         SpriteBatch.End();
 
         base.Draw(gameTime);
