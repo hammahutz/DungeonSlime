@@ -9,9 +9,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DungeonSlime.Library\DungeonSlime.Library.csproj" />
-    <ProjectReference Include="..\DungeonSlime.Content\DungeonSlime.Content.csproj" />
   </ItemGroup>
 <ItemGroup>
-    <MonoGameContentReference Include="..\DungeonSlime.Content\Content.mgcb" Link="Content\Content.mgcb" />
+    <MonoGameContentReference Include="..\Content\Content.mgcb" Link="Content\Content.mgcb" />
   </ItemGroup>
 </Project>
