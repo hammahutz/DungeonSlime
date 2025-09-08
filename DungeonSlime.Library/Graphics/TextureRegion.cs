@@ -1,5 +1,3 @@
-using System;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -16,5 +14,67 @@ public class TextureRegion
     {
         Texture = texture;
         SourceRectangle = new Rectangle(x, y, width, height);
+    }
+
+    public void Draw(SpriteBatch spriteBatch, Vector2 position) =>
+        Draw(
+            spriteBatch,
+            position,
+            Color.White,
+            0.0f,
+            Vector2.Zero,
+            Vector2.One,
+            SpriteEffects.None,
+            0.0f
+        );
+
+    public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color) =>
+        Draw(spriteBatch, position, color, 0f, Vector2.Zero, Vector2.One, SpriteEffects.None, 0.0f);
+
+    public void Draw(
+        SpriteBatch spriteBatch,
+        Vector2 position,
+        Color color,
+        float rotation,
+        Vector2 origin,
+        float scale,
+        SpriteEffects effects,
+        float layerDepth
+    )
+    {
+        Draw(
+            spriteBatch,
+            position,
+            color,
+            rotation,
+            origin,
+            new Vector2(scale, scale),
+            effects,
+            layerDepth
+        );
+    }
+
+    public void Draw(
+        SpriteBatch spriteBatch,
+        Vector2 position,
+        Color color,
+        float rotation,
+        Vector2 origin,
+        Vector2 scale,
+        SpriteEffects effects,
+        float layerDetph
+    )
+    {
+        spriteBatch.Draw(
+            Texture,
+            position,
+            SourceRectangle,
+            color,
+            rotation,
+            origin,
+            scale,
+            effects,
+            layerDetph
+        );
     }
 }
