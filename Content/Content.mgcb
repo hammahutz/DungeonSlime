@@ -16,14 +16,14 @@
 #begin data/atlas-definition.xml
 /copy:data/atlas-definition.xml
 
-#begin Fonts/Font.spritefont
+#begin fonts/font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/Font.spritefont
+/build:fonts/font.spritefont
 
-#begin Images/atlas.png
+#begin images/atlas.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -33,9 +33,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/atlas.png
+/build:images/atlas.png
 
-#begin Images/Logo.png
+#begin images/logo.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -45,9 +45,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Logo.png
+/build:images/logo.png
 
-#begin Images/pong-atlas.png
+#begin images/pong-atlas.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -57,5 +57,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/pong-atlas.png
+/build:images/pong-atlas.png
 

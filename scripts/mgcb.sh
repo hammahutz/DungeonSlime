@@ -1,2 +1,2 @@
 #!/bin/bash
-dotnet mgcb-editor Content/Content.mgcb
+dotnet mgcb-editor content/content.mgcb
