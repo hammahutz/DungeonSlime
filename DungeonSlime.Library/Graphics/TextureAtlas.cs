@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
+
 using DungeonSlime.Library.Graphics;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -54,43 +56,58 @@ public class TextureAtlas
 
     public void Clear() => _regions.Clear();
 
-    public static TextureAtlas FromFile(ContentManager content, string fileName)
+    public static TextureAtlas FromFile(ContentManager content, params string[] relativeFilePath)
     {
         TextureAtlas atlas = new TextureAtlas();
 
-        string filePath = Path.Combine(content.RootDirectory, fileName);
+        string filePath = Path.Combine([content.RootDirectory, ..relativeFilePath]);
 
-        using (Stream stream = TitleContainer.OpenStream(fileName))
+        try
         {
-            using (XmlReader reader = XmlReader.Create(stream))
+            using (Stream stream = TitleContainer.OpenStream(filePath))
             {
-                XDocument document = XDocument.Load(reader);
-                XElement root = document.Root;
-
-                string texturePath = root.Element("Texture").Value;
-                atlas.Texture = content.Load<Texture2D>(texturePath);
-
-                var regions = root.Element("Regions")?.Elements("Region");
-
-                if (regions is not null)
+                using (XmlReader reader = XmlReader.Create(stream))
                 {
-                    foreach (var region in regions)
+                    XDocument document = XDocument.Load(reader);
+                    XElement root = document.Root;
+
+                    string texturePath = root.Element("Texture").Value;
+                    atlas.Texture = content.Load<Texture2D>(texturePath);
+
+                    var regions = root.Element("Regions")?.Elements("Region");
+
+                    if (regions is not null)
                     {
-                        string name = region.Attribute("name")?.Value;
-                        if (string.IsNullOrEmpty(name))
+                        foreach (var region in regions)
                         {
-                            continue;
+                            string name = region.Attribute("name")?.Value;
+                            if (string.IsNullOrEmpty(name))
+                            {
+                                continue;
+                            }
+
+                            int x = int.Parse(region.Attribute("x")?.Value ?? "0");
+                            int y = int.Parse(region.Attribute("y")?.Value ?? "0");
+                            int width = int.Parse(region.Attribute("width")?.Value ?? "0");
+                            int height = int.Parse(region.Attribute("height")?.Value ?? "0");
+
+                            atlas.AddRegion(name, x, y, width, height);
                         }
-
-                        int x = int.Parse(region.Attribute("x")?.Value ?? "0");
-                        int y = int.Parse(region.Attribute("y")?.Value ?? "0");
-                        int widht = int.Parse(region.Attribute("widht")?.Value ?? "0");
-                        int height = int.Parse(region.Attribute("height")?.Value ?? "0");
-
-                        atlas.AddRegion(name, x, y, widht, height);
                     }
                 }
             }
+        }
+        catch (FileNotFoundException ex)
+        {
+            throw new FileNotFoundException($"Could not find the atlas definition file: {filePath}", ex);
+        }
+        catch (XmlException ex)
+        {
+            throw new XmlException($"Error parsing the atlas definition file: {filePath}", ex);
+        }
+        catch (System.Exception ex)
+        {
+            throw new System.Exception($"An error occurred while loading the texture atlas from file: {filePath}", ex);
         }
 
         return atlas;

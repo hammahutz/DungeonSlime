@@ -63,9 +63,7 @@ public class Core : Game
     {
         base.Initialize();
 
-        // Set Core's Graphics device to a refernece of the base Game's grahpics device
         GraphicsDevice = base.GraphicsDevice;
-
         SpriteBatch = new SpriteBatch(GraphicsDevice);
     }
 }

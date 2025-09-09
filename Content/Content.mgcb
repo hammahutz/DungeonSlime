@@ -14,9 +14,7 @@
 #---------------------------------- Content ---------------------------------#
 
 #begin data/atlas-definition.xml
-/importer:XmlImporter
-/processor:PassThroughProcessor
-/build:data/atlas-definition.xml
+/copy:data/atlas-definition.xml
 
 #begin Fonts/Font.spritefont
 /importer:FontDescriptionImporter

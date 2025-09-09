@@ -36,7 +36,7 @@ public class Game1 : Core
         // atlas.AddRegion("slime", 0, 0, 20, 20);
         // atlas.AddRegion("bat", 20, 0, 20, 20);
 
-        TextureAtlas atlas = TextureAtlas.FromFile(Content, "Data/atlas-definition.xml");
+        TextureAtlas atlas = TextureAtlas.FromFile(Content, "data", "atlas-definition.xml");
 
         _slime = atlas.GetRegion("slime");
         _bat = atlas.GetRegion("bat");
