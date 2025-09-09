@@ -2,9 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
-
 using DungeonSlime.Library.Graphics;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -60,7 +58,7 @@ public class TextureAtlas
     {
         TextureAtlas atlas = new TextureAtlas();
 
-        string filePath = Path.Combine([content.RootDirectory, ..relativeFilePath]);
+        string filePath = Path.Combine([content.RootDirectory, .. relativeFilePath]);
 
         try
         {
@@ -99,7 +97,10 @@ public class TextureAtlas
         }
         catch (FileNotFoundException ex)
         {
-            throw new FileNotFoundException($"Could not find the atlas definition file: {filePath}", ex);
+            throw new FileNotFoundException(
+                $"Could not find the atlas definition file: {filePath}",
+                ex
+            );
         }
         catch (XmlException ex)
         {
@@ -107,9 +108,14 @@ public class TextureAtlas
         }
         catch (System.Exception ex)
         {
-            throw new System.Exception($"An error occurred while loading the texture atlas from file: {filePath}", ex);
+            throw new System.Exception(
+                $"An error occurred while loading the texture atlas from file: {filePath}",
+                ex
+            );
         }
 
         return atlas;
     }
+
+    public Sprite CreateSprite(string regionName) => new Sprite(GetRegion(regionName));
 }

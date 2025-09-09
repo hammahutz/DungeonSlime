@@ -14,8 +14,8 @@ public class Game1 : Core
     private Rectangle iconSourceRect = new(0, 0, 128, 128);
     private Rectangle wordmarkSourceRect = new(150, 34, 458, 58);
 
-    private TextureRegion _slime;
-    private TextureRegion _bat;
+    private Sprite _slime;
+    private Sprite _bat;
 
     public Game1()
         : base("DungeonSlime", width: 1920, height: 1080) { }
@@ -32,14 +32,13 @@ public class Game1 : Core
         _font = Content.Load<SpriteFont>("fonts/font");
         _logo = Content.Load<Texture2D>("images/logo");
 
-        // TextureAtlas atlas = new TextureAtlas(Content.Load<Texture2D>("Images/atlas"));
-        // atlas.AddRegion("slime", 0, 0, 20, 20);
-        // atlas.AddRegion("bat", 20, 0, 20, 20);
-
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "data", "atlas-definition.xml");
 
-        _slime = atlas.GetRegion("slime");
-        _bat = atlas.GetRegion("bat");
+        _slime = atlas.CreateSprite("slime");
+        _slime.Scale = new Vector2(4.0f, 4.0f);
+
+        _bat = atlas.CreateSprite("bat");
+        _bat.Scale = new Vector2(4.0f, 4.0f);
     }
 
     protected override void Update(GameTime gameTime)
@@ -77,26 +76,8 @@ public class Game1 : Core
             0.0f
         );
 
-        _slime.Draw(
-            SpriteBatch,
-            Vector2.Zero,
-            Color.White,
-            0.0f,
-            Vector2.One,
-            4.0f,
-            SpriteEffects.None,
-            0.0f
-        );
-        _bat.Draw(
-            SpriteBatch,
-            new Vector2(300, 300),
-            Color.White,
-            0.0f,
-            Vector2.One,
-            4.0f,
-            SpriteEffects.None,
-            0.0f
-        );
+        _slime.Draw(SpriteBatch, Vector2.One);
+        _bat.Draw(SpriteBatch, new Vector2(300f, 300f));
         SpriteBatch.End();
 
         base.Draw(gameTime);
