@@ -56,7 +56,7 @@ public class Core : Game
     private void SetContent()
     {
         Content = base.Content;
-        Content.RootDirectory = "Content";
+        Content.RootDirectory = "content";
     }
 
     protected override void Initialize()

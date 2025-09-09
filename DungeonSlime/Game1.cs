@@ -29,8 +29,8 @@ public class Game1 : Core
 
     protected override void LoadContent()
     {
-        _font = Content.Load<SpriteFont>("Fonts/Font");
-        _logo = Content.Load<Texture2D>("Images/Logo");
+        _font = Content.Load<SpriteFont>("fonts/font");
+        _logo = Content.Load<Texture2D>("images/logo");
 
         // TextureAtlas atlas = new TextureAtlas(Content.Load<Texture2D>("Images/atlas"));
         // atlas.AddRegion("slime", 0, 0, 20, 20);

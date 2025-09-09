@@ -30,7 +30,7 @@
     <ProjectReference Include="..\DungeonSlime\DungeonSlime.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="..\Content\Content.mgcb" Link="Content\Content.mgcb" />
+    <MonoGameContentReference Include="..\content\content.mgcb" Link="content\content.mgcb" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

@@ -11,6 +11,6 @@
     <ProjectReference Include="..\DungeonSlime.Library\DungeonSlime.Library.csproj" />
   </ItemGroup>
 <ItemGroup>
-    <MonoGameContentReference Include="..\Content\Content.mgcb" Link="Content\Content.mgcb" />
+    <MonoGameContentReference Include="..\content\content.mgcb" Link="content\content.mgcb" />
   </ItemGroup>
 </Project>
