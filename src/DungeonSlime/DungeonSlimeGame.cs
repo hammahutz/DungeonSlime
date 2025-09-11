@@ -17,8 +17,8 @@ public class DungeonSlimeGame : Core
     private Rectangle iconSourceRect = new(0, 0, 128, 128);
     private Rectangle wordmarkSourceRect = new(150, 34, 458, 58);
 
-    private Sprite _slime;
-    private Sprite _bat;
+    private AnimatedSprite _slime;
+    private AnimatedSprite _bat;
 
     public DungeonSlimeGame()
         : base("DungeonSlime", width: 1920, height: 1080) { }
@@ -43,10 +43,10 @@ public class DungeonSlimeGame : Core
 
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "data", "atlas-definition.xml");
 
-        _slime = atlas.CreateSprite("slime-1");
+        _slime = atlas.CreateAnimatedSprite("slime-animation");
         _slime.Scale = new Vector2(4.0f, 4.0f);
 
-        _bat = atlas.CreateSprite("bat-1");
+        _bat = atlas.CreateAnimatedSprite("bat-animation");
         _bat.Scale = new Vector2(4.0f, 4.0f);
     }
 
@@ -58,7 +58,8 @@ public class DungeonSlimeGame : Core
         )
             Exit();
 
-        // TODO: Add your update logic here
+        _bat.Update(gameTime);
+        _slime.Update(gameTime);
 
         base.Update(gameTime);
     }

@@ -173,4 +173,5 @@ public class TextureAtlas
     }
 
     public Sprite CreateSprite(string regionName) => new Sprite(GetRegion(regionName));
+    public AnimatedSprite CreateAnimatedSprite(string animationName) => new AnimatedSprite(GetAnimation(animationName));
 }

@@ -11,7 +11,7 @@
   <Animations>
     <Animation name="slime-animation" delay="200">
       <Frame region="slime-1" />
-      <Frame region="slime-1" />
+      <Frame region="slime-2" />
     </Animation>
     <Animation name="bat-animation" delay="200">
       <Frame region="bat-1" />
