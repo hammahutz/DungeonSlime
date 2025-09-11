@@ -10,10 +10,6 @@
             "request": "launch",
             "preLaunchTask": "buildOpenGL",
             "program": "${workspaceFolder}/src/DungeonSlime.OpenGL/bin/Debug/net9.0/DungeonSlime.OpenGL.dll",
-            "args": [
-                "-p",
-                "OpenGL"
-            ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
@@ -24,10 +20,6 @@
             "request": "launch",
             "preLaunchTask": "buildDirectX",
             "program": "${workspaceFolder}/src/DungeonSlime.DirectX/bin/Debug/net9.0-windows/DungeonSlime.DirectX.dll",
-            "args": [
-                "-p",
-                "DirectX"
-            ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"

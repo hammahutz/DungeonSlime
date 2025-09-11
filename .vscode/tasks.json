@@ -1,22 +1,29 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "buildOpenGL",
-			"type": "process",
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "buildOpenGL",
+            "type": "process",
             "command": "dotnet",
-            "args": ["build", "-p:DefineConstants=OPENGL"],
-			"group": "build",
-			"problemMatcher": []
-		},
-{
-
-			"label": "buildDirectX",
-			"type": "process",
+            "args": [
+                "build",
+                "-p:DefineConstants=OPENGL",
+                "src/DungeonSlime.OpenGL/DungeonSlime.OpenGL.csproj"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "buildDirectX",
+            "type": "process",
             "command": "dotnet",
-            "args": ["build", "-p:DefineConstants=DIRECTX"],
-			"group": "build",
-			"problemMatcher": []
-		}
-	]
+            "args": [
+                "build",
+                "-p:DefineConstants=DIRECTX",
+                "src/DungeonSlime.DirectX/DungeonSlime.DirectX.csproj"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
 }

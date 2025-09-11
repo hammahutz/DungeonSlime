@@ -4,6 +4,9 @@ using Microsoft.Xna.Framework.Input;
 
 using DungeonSlime.Engine;
 using DungeonSlime.Engine.Graphics;
+using System.Diagnostics;
+using System;
+using DungeonSlime.Engine.Utils;
 
 namespace DungeonSlime;
 
@@ -29,6 +32,12 @@ public class DungeonSlimeGame : Core
 
     protected override void LoadContent()
     {
+        Logger.Trace($"Running on ");
+        Logger.Info($"Running on ");
+        Logger.Debug($"Running on ");
+        Logger.Warning($"Running on ");
+        Logger.Error($"Running on ");
+        Logger.Critical($"Running on ");
         _font = Content.Load<SpriteFont>("fonts/font");
         _logo = Content.Load<Texture2D>("images/logo");
 
@@ -62,6 +71,10 @@ public class DungeonSlimeGame : Core
         SpriteBatch.DrawString(_font, "Hello World", new Vector2(100, 100), Color.White);
 #if OPENGL
         SpriteBatch.DrawString(_font, "OpenGL", new Vector2(132, 135), Color.Blue);
+#endif
+
+#if DIRECTX
+        SpriteBatch.DrawString(_font, "DirectX", new Vector2(132, 135), Color.Green);
 #endif
 
         SpriteBatch.Draw(

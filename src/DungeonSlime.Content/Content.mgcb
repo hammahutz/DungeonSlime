@@ -10,6 +10,7 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\DungeonSlime.PipeLine\bin\Debug\net9.0\DungeonSlime.PipeLine.dll
 
 #---------------------------------- Content ---------------------------------#
 
