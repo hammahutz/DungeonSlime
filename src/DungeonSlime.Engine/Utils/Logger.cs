@@ -12,7 +12,7 @@ public static class Logger
     static Logger()
     {
         _outputs.Add(new ConsoleOutput());
-        _outputs.Add(new FileOutput("log.txt"));
+        _outputs.Add(new FileOutput("log/game.log"));
     }
     public static void AddOutput(ILogOutput output)
     {
