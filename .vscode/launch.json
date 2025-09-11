@@ -5,21 +5,32 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Debug OpenGL",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceFolder}/DungeonSlime.OpenGL/bin/Debug/net8.0/DungeonSlime.OpenGL.dll",
-            "args": ["-p", "OpenGL"],
+            "preLaunchTask": "buildOpenGL",
+            "program": "${workspaceFolder}/src/DungeonSlime.OpenGL/bin/Debug/net9.0/DungeonSlime.OpenGL.dll",
+            "args": [
+                "-p",
+                "OpenGL"
+            ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
         },
         {
-            "name": "OpenGL debug",
-            "type": "dotnet",
+            "name": "Debug DirectX",
+            "type": "coreclr",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/DungeonSlime.OpenGL/DungeonSlime.OpenGL.csproj"
-        }
+            "preLaunchTask": "buildDirectX",
+            "program": "${workspaceFolder}/src/DungeonSlime.DirectX/bin/Debug/net9.0-windows/DungeonSlime.DirectX.dll",
+            "args": [
+                "-p",
+                "DirectX"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
     ]
 }

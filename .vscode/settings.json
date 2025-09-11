@@ -10,7 +10,11 @@
         ".gitignore": true,
         ".editorconfig": true,
         ".config": true,
-        ".vscode": true
+        ".vscode": true,
+        ".vs": true,
+        "**/*.csproj": true,
+        "**/*.sln": true,
+        "**/LICENSE": true
     },
     "explorerExclude.backup": {},
     "terminal.integrated.cursorBlinking": true

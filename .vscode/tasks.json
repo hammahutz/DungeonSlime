@@ -2,12 +2,21 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "buildOpenGL",
 			"type": "process",
             "command": "dotnet",
             "args": ["build", "-p:DefineConstants=OPENGL"],
 			"group": "build",
-			"problemMatcher": [],
-			"label": "build"
+			"problemMatcher": []
+		},
+{
+
+			"label": "buildDirectX",
+			"type": "process",
+            "command": "dotnet",
+            "args": ["build", "-p:DefineConstants=DIRECTX"],
+			"group": "build",
+			"problemMatcher": []
 		}
 	]
 }
