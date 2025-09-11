@@ -43,10 +43,10 @@ public class DungeonSlimeGame : Core
 
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "data", "atlas-definition.xml");
 
-        _slime = atlas.CreateSprite("slime");
+        _slime = atlas.CreateSprite("slime-1");
         _slime.Scale = new Vector2(4.0f, 4.0f);
 
-        _bat = atlas.CreateSprite("bat");
+        _bat = atlas.CreateSprite("bat-1");
         _bat.Scale = new Vector2(4.0f, 4.0f);
     }
 

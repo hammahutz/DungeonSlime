@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/src/DungeonSlime.OpenGL/bin/Debug/net9.0/DungeonSlime.OpenGL.dll",
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
-            "console": "internalConsole"
+            "console": "integratedTerminal"
         },
         {
             "name": "Debug DirectX",
@@ -22,7 +22,7 @@
             "program": "${workspaceFolder}/src/DungeonSlime.DirectX/bin/Debug/net9.0-windows/DungeonSlime.DirectX.dll",
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
-            "console": "internalConsole"
+            "console": "integratedTerminal"
         },
     ]
 }
