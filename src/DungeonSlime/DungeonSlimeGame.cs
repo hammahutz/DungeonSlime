@@ -32,23 +32,23 @@ public class DungeonSlimeGame : Core
 
         base.Initialize();
 
-        Input.Commands.RegisterKeyboardCommand(new KeyboardCommand(Keys.Left,InputTrigger.JustPressed, () =>
+        Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Left, InputTrigger.JustPressed, () =>
         {
             Logger.Info("Left pressed");
             _slimeVelocity = Vector2.UnitX * -10;
         }));
 
-        Input.Commands.RegisterKeyboardCommand(new KeyboardCommand(Keys.Right,InputTrigger.JustPressed, () =>
+        Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Right, InputTrigger.JustPressed, () =>
         {
             Logger.Info("Right pressed");
             _slimeVelocity = Vector2.UnitX * 10;
         }));
-        Input.Commands.RegisterKeyboardCommand(new KeyboardCommand(Keys.Up,InputTrigger.JustPressed, () =>
+        Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Up, InputTrigger.JustPressed, () =>
         {
             Logger.Info("Up pressed");
             _slimeVelocity = Vector2.UnitY * -10;
         }));
-        Input.Commands.RegisterKeyboardCommand(new KeyboardCommand(Keys.Down,InputTrigger.JustPressed, () =>
+        Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Down, InputTrigger.JustPressed, () =>
         {
             Logger.Info("Down pressed");
             _slimeVelocity = Vector2.UnitY * 10;

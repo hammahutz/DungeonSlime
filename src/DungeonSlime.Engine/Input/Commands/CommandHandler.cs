@@ -1,31 +1,33 @@
 using System.Collections.Generic;
+
+using Microsoft.Xna.Framework.Input;
 namespace DungeonSlime.Engine.Input.Commands;
 
 public class CommandHandler
 {
 
-    public List<KeyboardCommand> KeyboardCommands { get; private set; }
-    public List<MouseCommand> MouseCommands { get; private set; }
-    public List<GamePadCommand> GamePadCommands { get; private set; }
+    public List<Command<KeyboardState, Keys>> KeyboardCommands { get; private set; }
+    public List<Command<MouseState, MouseButton>> MouseCommands { get; private set; }
+    public List<Command<GamePadState, Buttons>> GamePadCommands { get; private set; }
 
     public CommandHandler()
     {
-        KeyboardCommands = new List<KeyboardCommand>();
-        MouseCommands = new List<MouseCommand>();
-        GamePadCommands = new List<GamePadCommand>();
+        KeyboardCommands = new();
+        MouseCommands = new();
+        GamePadCommands = new();
     }
 
-    public void RegisterKeyboardCommand(KeyboardCommand command)
+    public void RegisterKeyboardCommand(Command<KeyboardState, Keys> command)
     {
         if (!KeyboardCommands.Contains(command))
             KeyboardCommands.Add(command);
     }
-    public void RegisterMouseCommand(MouseCommand command)
+    public void RegisterMouseCommand(Command<MouseState, MouseButton> command)
     {
         if (!MouseCommands.Contains(command))
             MouseCommands.Add(command);
     }
-    public void RegisterGamePadCommand(GamePadCommand command)
+    public void RegisterGamePadCommand(Command<GamePadState, Buttons> command)
     {
         if (!GamePadCommands.Contains(command))
             GamePadCommands.Add(command);
