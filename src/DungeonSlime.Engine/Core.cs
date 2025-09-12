@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DungeonSlime.Engine;
 
-public class Core : Game
+public abstract class Core : Game
 {
     internal static Core s_instance;
     public static Core Instance => s_instance;
@@ -75,6 +75,9 @@ public class Core : Game
         SpriteBatch = new SpriteBatch(GraphicsDevice);
         Input = new InputManager();
 
+        // Register default commands
+        RegisterDefaultCommands();
+
         Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Escape, InputTrigger.JustPressed, () =>
         {
             if (ExitOnEscape && Input.Keyboard.IsDown(Keys.Escape))
@@ -83,6 +86,8 @@ public class Core : Game
             }
         }));
     }
+
+    protected abstract void RegisterDefaultCommands();
 
     override protected void Update(GameTime gameTime)
     {
