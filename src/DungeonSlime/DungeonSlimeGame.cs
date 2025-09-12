@@ -6,6 +6,7 @@ using DungeonSlime.Engine;
 using DungeonSlime.Engine.Graphics;
 using DungeonSlime.Engine.Utils.Logging;
 using DungeonSlime.Engine.Input.Commands;
+using DungeonSlime.Engine.Input;
 
 namespace DungeonSlime;
 
@@ -53,6 +54,12 @@ public class DungeonSlimeGame : Core
             Logger.Info("Down pressed");
             _slimeVelocity = Vector2.UnitY * 10;
         }));
+
+        Input.Commands.RegisterMouseCommand(new Command<MouseState, MouseButton>(MouseButton.Left, InputTrigger.JustReleased, () =>
+        {
+            Logger.Info("Mouse Left Clicked");
+            _slimePosition = Input.Mouse.Position.ToVector2();
+        }));
     }
 
     protected override void LoadContent()
@@ -72,12 +79,6 @@ public class DungeonSlimeGame : Core
 
     protected override void Update(GameTime gameTime)
     {
-        if (
-            GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
-            || Keyboard.GetState().IsKeyDown(Keys.Escape)
-        )
-            Exit();
-
         _bat.Update(gameTime);
         _slime.Update(gameTime);
 

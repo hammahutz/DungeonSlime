@@ -1,6 +1,7 @@
 using System;
 
 using DungeonSlime.Engine.Input;
+using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Utils.Logging;
 
 using Microsoft.Xna.Framework;
@@ -73,17 +74,19 @@ public class Core : Game
         GraphicsDevice = base.GraphicsDevice;
         SpriteBatch = new SpriteBatch(GraphicsDevice);
         Input = new InputManager();
+
+        Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Escape, InputTrigger.JustPressed, () =>
+        {
+            if (ExitOnEscape && Input.Keyboard.IsDown(Keys.Escape))
+            {
+                Exit();
+            }
+        }));
     }
 
     override protected void Update(GameTime gameTime)
     {
         Input.Update(gameTime);
-
-        if (ExitOnEscape && Input.Keyboard.IsDown(Keys.Escape))
-        {
-            Exit();
-        }
-
         base.Update(gameTime);
     }
 }
