@@ -1,13 +1,12 @@
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+
 namespace DungeonSlime.Engine.Input;
 
-public class MouseInfo
+public class MouseInfo : InputInfo<MouseState, MouseButton>
 {
     // Current
-    public MouseState CurrentState { get; private set; }
     public Point Position { get => CurrentState.Position; set => SetPosition(value.X, value.Y); }
     public int X { get => CurrentState.X; set => SetPosition(value, CurrentState.Y); }
     public int Y { get => CurrentState.Y; set => SetPosition(CurrentState.X, value); }
@@ -15,7 +14,6 @@ public class MouseInfo
 
 
     // Previous
-    public MouseState PreviousState { get; private set; }
     public Point PositionDelta => CurrentState.Position - PreviousState.Position;
     public int XDelta => CurrentState.X - PreviousState.X;
     public int YDelta => CurrentState.Y - PreviousState.Y;
@@ -23,19 +21,9 @@ public class MouseInfo
     public bool WasMoved => PositionDelta != Point.Zero;
 
 
-    public MouseInfo()
-    {
-        PreviousState = new MouseState();
-        CurrentState = Mouse.GetState();
-    }
+    protected override MouseState GetState => Mouse.GetState();
 
-    public void Update()
-    {
-        PreviousState = CurrentState;
-        CurrentState = Mouse.GetState();
-    }
-
-    public bool IsButtonDown(MouseButton button)
+    public override bool IsDown(MouseButton button)
     {
         switch (button)
         {
@@ -54,7 +42,7 @@ public class MouseInfo
         }
     }
 
-    public bool IsButtonUp(MouseButton button)
+    public override bool IsUp(MouseButton button)
     {
         switch (button)
         {
@@ -73,7 +61,7 @@ public class MouseInfo
         }
     }
 
-    public bool WasButtonJustPressed(MouseButton button)
+    public override bool WasJustPressed(MouseButton button)
     {
         switch (button)
         {
@@ -91,7 +79,7 @@ public class MouseInfo
                 return false;
         }
     }
-    public bool WasButtonJustReleased(MouseButton button)
+    public override bool WasJustReleased(MouseButton button)
     {
         switch (button)
         {

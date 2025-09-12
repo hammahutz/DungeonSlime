@@ -1,28 +1,29 @@
 using System;
 
+using DungeonSlime.Engine.Input;
 using DungeonSlime.Engine.Utils.Logging;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace DungeonSlime.Engine;
 
 public class Core : Game
 {
     internal static Core s_instance;
-
     public static Core Instance => s_instance;
 
     // TODO: Why not?: public static Core Ins { get; internal set; }
 
     public static GraphicsDeviceManager Graphics { get; private set; }
-
     public static new GraphicsDevice GraphicsDevice { get; private set; }
-
     public SpriteBatch SpriteBatch { get; private set; }
-
     public static new ContentManager Content { get; private set; }
+
+    public InputManager Input { get; private set; }
+    public bool ExitOnEscape { get; }
 
     public Core(string title, int width = 800, int height = 600, bool fullScreen = false)
     {
@@ -30,7 +31,9 @@ public class Core : Game
         SetInstance();
         SetWindow(width, height, fullScreen, title);
         SetContent();
+
         IsMouseVisible = true;
+        ExitOnEscape = true;
     }
 
     private void SetInstance()
@@ -60,7 +63,7 @@ public class Core : Game
     private void SetContent()
     {
         Content = base.Content;
-        Content.RootDirectory = "content";
+        Content.RootDirectory = "Content";
     }
 
     protected override void Initialize()
@@ -69,5 +72,18 @@ public class Core : Game
 
         GraphicsDevice = base.GraphicsDevice;
         SpriteBatch = new SpriteBatch(GraphicsDevice);
+        Input = new InputManager();
+    }
+
+    override protected void Update(GameTime gameTime)
+    {
+        Input.Update(gameTime);
+
+        if (ExitOnEscape && Input.Keyboard.IsDown(Keys.Escape))
+        {
+            Exit();
+        }
+
+        base.Update(gameTime);
     }
 }

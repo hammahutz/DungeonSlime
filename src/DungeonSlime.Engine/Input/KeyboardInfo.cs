@@ -1,26 +1,16 @@
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+
 
 namespace DungeonSlime.Engine.Input;
 
-public class KeyboardInfo
+public class KeyboardInfo : InputInfo<KeyboardState, Keys>
 {
-    public KeyboardState PreviousState { get; private set; }
-    public KeyboardState CurrentState { get; private set; }
+    protected override KeyboardState GetState => Keyboard.GetState();
 
-    public KeyboardInfo()
-    {
-        PreviousState = new KeyboardState();
-        CurrentState = Keyboard.GetState();
-    }
+    public override bool IsDown(Keys key) => CurrentState.IsKeyDown(key);
+    public override bool IsUp(Keys key) => CurrentState.IsKeyUp(key);
+    public override bool WasJustPressed(Keys key) => CurrentState.IsKeyDown(key) && PreviousState.IsKeyUp(key);
+    public override bool WasJustReleased(Keys key) => CurrentState.IsKeyUp(key) && PreviousState.IsKeyDown(key);
 
-    public void Update()
-    {
-        PreviousState = CurrentState;
-        CurrentState = Keyboard.GetState();
-    }
-
-    public bool IsKeyDown(Keys key) => CurrentState.IsKeyDown(key);
-    public bool IsKeyUp(Keys key) => CurrentState.IsKeyUp(key);
-    public bool WasKeyJustPressed(Keys key) => CurrentState.IsKeyDown(key) && PreviousState.IsKeyUp(key);
-    public bool WasKeyJustReleased(Keys key) => CurrentState.IsKeyUp(key) && PreviousState.IsKeyDown(key);
 }

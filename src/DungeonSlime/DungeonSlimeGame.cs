@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using DungeonSlime.Engine;
 using DungeonSlime.Engine.Graphics;
 using DungeonSlime.Engine.Utils.Logging;
+using DungeonSlime.Engine.Input.Commands;
 
 namespace DungeonSlime;
 
@@ -18,6 +19,9 @@ public class DungeonSlimeGame : Core
     private AnimatedSprite _slime;
     private AnimatedSprite _bat;
 
+    private Vector2 _slimePosition = new(100, 200);
+    private Vector2 _slimeVelocity = new(0, 0);
+
 
     public DungeonSlimeGame()
         : base("DungeonSlime", width: 1920, height: 1080) { }
@@ -27,6 +31,28 @@ public class DungeonSlimeGame : Core
         // TODO: Add your initialization logic here
 
         base.Initialize();
+
+        Input.Commands.RegisterKeyboardCommand(new KeyboardCommand(Keys.Left,InputTrigger.JustPressed, () =>
+        {
+            Logger.Info("Left pressed");
+            _slimeVelocity = Vector2.UnitX * -10;
+        }));
+
+        Input.Commands.RegisterKeyboardCommand(new KeyboardCommand(Keys.Right,InputTrigger.JustPressed, () =>
+        {
+            Logger.Info("Right pressed");
+            _slimeVelocity = Vector2.UnitX * 10;
+        }));
+        Input.Commands.RegisterKeyboardCommand(new KeyboardCommand(Keys.Up,InputTrigger.JustPressed, () =>
+        {
+            Logger.Info("Up pressed");
+            _slimeVelocity = Vector2.UnitY * -10;
+        }));
+        Input.Commands.RegisterKeyboardCommand(new KeyboardCommand(Keys.Down,InputTrigger.JustPressed, () =>
+        {
+            Logger.Info("Down pressed");
+            _slimeVelocity = Vector2.UnitY * 10;
+        }));
     }
 
     protected override void LoadContent()
@@ -41,6 +67,7 @@ public class DungeonSlimeGame : Core
 
         _bat = atlas.CreateAnimatedSprite("bat-animation");
         _bat.Scale = new Vector2(4.0f, 4.0f);
+
     }
 
     protected override void Update(GameTime gameTime)
@@ -54,6 +81,7 @@ public class DungeonSlimeGame : Core
         _bat.Update(gameTime);
         _slime.Update(gameTime);
 
+        _slimePosition += _slimeVelocity;
 
 
         base.Update(gameTime);
@@ -85,7 +113,7 @@ public class DungeonSlimeGame : Core
             0.0f
         );
 
-        _slime.Draw(SpriteBatch, Vector2.One);
+        _slime.Draw(SpriteBatch, _slimePosition);
         _bat.Draw(SpriteBatch, new Vector2(300f, 300f));
         SpriteBatch.End();
 
