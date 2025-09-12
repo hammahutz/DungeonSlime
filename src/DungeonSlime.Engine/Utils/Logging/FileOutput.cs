@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace DungeonSlime.Engine.Utils;
+namespace DungeonSlime.Engine.Utils.Logging;
 
 public class FileOutput : ILogOutput
 {

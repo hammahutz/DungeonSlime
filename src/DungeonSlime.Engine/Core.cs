@@ -1,4 +1,7 @@
 using System;
+
+using DungeonSlime.Engine.Utils.Logging;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -23,6 +26,7 @@ public class Core : Game
 
     public Core(string title, int width = 800, int height = 600, bool fullScreen = false)
     {
+        Logger.Info("Init Core");
         SetInstance();
         SetWindow(width, height, fullScreen, title);
         SetContent();
@@ -31,6 +35,7 @@ public class Core : Game
 
     private void SetInstance()
     {
+        Logger.Info("Set instance");
         if (s_instance != null)
         {
             throw new InvalidOperationException($"Only a singel Core instance can be created");

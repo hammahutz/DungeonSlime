@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DungeonSlime.Engine.Utils;
+namespace DungeonSlime.Engine.Utils.Logging;
 
 public static class Logger
 {

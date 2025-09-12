@@ -1,4 +1,4 @@
-namespace DungeonSlime.Engine.Utils;
+namespace DungeonSlime.Engine.Utils.Logging;
 
 public enum LogLevel
 {

@@ -4,9 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 using DungeonSlime.Engine;
 using DungeonSlime.Engine.Graphics;
-using System.Diagnostics;
-using System;
-using DungeonSlime.Engine.Utils;
+using DungeonSlime.Engine.Utils.Logging;
 
 namespace DungeonSlime;
 
@@ -20,6 +18,7 @@ public class DungeonSlimeGame : Core
     private AnimatedSprite _slime;
     private AnimatedSprite _bat;
 
+
     public DungeonSlimeGame()
         : base("DungeonSlime", width: 1920, height: 1080) { }
 
@@ -32,12 +31,6 @@ public class DungeonSlimeGame : Core
 
     protected override void LoadContent()
     {
-        Logger.Trace($"Running on ");
-        Logger.Info($"Running on ");
-        Logger.Debug($"Running on ");
-        Logger.Warning($"Running on ");
-        Logger.Error($"Running on ");
-        Logger.Critical($"Running on ");
         _font = Content.Load<SpriteFont>("fonts/font");
         _logo = Content.Load<Texture2D>("images/logo");
 
@@ -60,6 +53,8 @@ public class DungeonSlimeGame : Core
 
         _bat.Update(gameTime);
         _slime.Update(gameTime);
+
+
 
         base.Update(gameTime);
     }
