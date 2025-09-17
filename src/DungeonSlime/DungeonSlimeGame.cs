@@ -29,7 +29,6 @@ public class DungeonSlimeGame : Core
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
 
         base.Initialize();
 
@@ -121,7 +120,7 @@ public class DungeonSlimeGame : Core
 
         Input.Commands.RegisterMouseCommand(new Command<MouseState, MouseButton>(MouseButton.Left, InputTrigger.JustReleased, () =>
         {
-            Logger.Info("Mouse Left Clicked");
+            Logger.Info("Mouse Left Released");
             _slimePosition = Input.Mouse.Position.ToVector2();
         }));
     }
