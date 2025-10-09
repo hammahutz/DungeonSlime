@@ -1,2 +1,2 @@
 #!/bin/bash
-dotnet run --project DungeonSlime.OpenGL -p:DefineConstants="OPENGL"
+dotnet run --project src/DungeonSlime.OpenGL -p:DefineConstants="OPENGL"

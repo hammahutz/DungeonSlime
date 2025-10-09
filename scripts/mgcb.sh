@@ -1,2 +1,2 @@
 #!/bin/bash
-dotnet mgcb-editor content/content.mgcb
+dotnet mgcb-editor src/DungeonSlime.Content/Content.mgcb
