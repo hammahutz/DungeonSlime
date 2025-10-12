@@ -1,10 +1,7 @@
-using System.Dynamic;
-using System.IO;
-using System.Xml;
+using System;
 using System.Xml.Linq;
-
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace DungeonSlime.Engine.Graphics;
 
@@ -39,5 +36,25 @@ public class Tileset
     public TextureRegion GetTile(int index) => _tiles[index];
     public TextureRegion GetTile(int column, int row) => GetTile(row * Columns + column);
 
+    public static Tileset GetTileSetFromXML(ContentManager content, XDocument document)
+    {
+        XElement root = document.Root;
+        XElement tilesetElement = root.Element("Tileset");
+
+        string regionAttribute = tilesetElement.Attribute("region").Value;
+        string[] split = regionAttribute.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+        int x = int.Parse(split[0]);
+        int y = int.Parse(split[1]);
+        int width = int.Parse(split[2]);
+        int height = int.Parse(split[3]);
+
+        int tileWidth = int.Parse(tilesetElement.Attribute("tileWidth").Value);
+        int tileHeight = int.Parse(tilesetElement.Attribute("tileHeight").Value);
+        string contentPath = tilesetElement.Value;
+        Texture2D texture = content.Load<Texture2D>(contentPath);
+        TextureRegion textureRegion = new TextureRegion(texture, x, y, width, height);
+
+        return new Tileset(textureRegion, tileWidth, tileHeight);
+    }
 
 }

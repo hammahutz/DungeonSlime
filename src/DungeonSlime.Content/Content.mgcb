@@ -17,6 +17,9 @@
 #begin data/atlas-definition.xml
 /copy:data/atlas-definition.xml
 
+#begin data/tilemap-definition.xml
+/copy:data/tilemap-definition.xml
+
 #begin fonts/font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
