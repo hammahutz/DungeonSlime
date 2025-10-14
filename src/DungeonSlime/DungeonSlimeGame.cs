@@ -24,6 +24,8 @@ public class DungeonSlimeGame : Core
     private Vector2 _slimePosition = new(100, 200);
     private Vector2 _slimeVelocity = new(0, 0);
 
+    private Tilemap _tilemap;
+
 
     public DungeonSlimeGame()
         : base("DungeonSlime", width: 1920, height: 1080) { }
@@ -46,6 +48,8 @@ public class DungeonSlimeGame : Core
         _bat = atlas.CreateAnimatedSprite("bat-animation");
         _bat.Scale = new Vector2(4.0f, 4.0f);
 
+        _tilemap = Tilemap.FromFile(Content, "data/tilemap-definition.xml");
+        _tilemap.Scale = new Vector2(4.0f);
     }
 
     protected override void Update(GameTime gameTime)
@@ -83,6 +87,8 @@ public class DungeonSlimeGame : Core
             SpriteEffects.None,
             0.0f
         );
+
+        _tilemap.Draw(SpriteBatch);
 
         _slime.Draw(SpriteBatch, _slimePosition);
         _bat.Draw(SpriteBatch, new Vector2(300f, 300f));
