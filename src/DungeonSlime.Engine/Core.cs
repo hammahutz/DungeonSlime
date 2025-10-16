@@ -1,5 +1,5 @@
 using System;
-
+using DungeonSlime.Engine.Audio;
 using DungeonSlime.Engine.Input;
 using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Utils.Logging;
@@ -24,6 +24,7 @@ public abstract class Core : Game
     public static new ContentManager Content { get; private set; }
 
     public InputManager Input { get; private set; }
+    public AudioController Audio { get; private set; }
     public bool ExitOnEscape { get; }
 
     public Core(string title, int width = 800, int height = 600, bool fullScreen = false)
@@ -74,6 +75,7 @@ public abstract class Core : Game
         GraphicsDevice = base.GraphicsDevice;
         SpriteBatch = new SpriteBatch(GraphicsDevice);
         Input = new InputManager();
+        Audio = new AudioController();
 
         // Register default commands
         RegisterDefaultCommands();
@@ -92,6 +94,15 @@ public abstract class Core : Game
     override protected void Update(GameTime gameTime)
     {
         Input.Update(gameTime);
+        Audio.Update();
         base.Update(gameTime);
     }
+
+    protected override void UnloadContent()
+    {
+        Audio.Dispose();
+
+        base.UnloadContent();
+    }
+
 }

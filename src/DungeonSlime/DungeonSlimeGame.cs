@@ -8,6 +8,7 @@ using DungeonSlime.Engine.Utils.Logging;
 using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Input;
 using DungeonSlime.Engine.Collision;
+using Microsoft.Xna.Framework.Media;
 
 namespace DungeonSlime;
 
@@ -26,13 +27,18 @@ public class DungeonSlimeGame : Core
 
     private Tilemap _tilemap;
 
+    private Song _themeSong;
+
+
 
     public DungeonSlimeGame()
-        : base("DungeonSlime", width: 1920, height: 1080) { }
+        : base("DungeonSlime", width: 1280, height: 720) { }
 
     protected override void Initialize()
     {
         base.Initialize();
+
+        Audio.PlaySong(_themeSong);
     }
 
     protected override void LoadContent()
@@ -50,6 +56,8 @@ public class DungeonSlimeGame : Core
 
         _tilemap = Tilemap.FromFile(Content, "data/tilemap-definition.xml");
         _tilemap.Scale = new Vector2(4.0f);
+
+        _themeSong = Content.Load<Song>("audio/theme");
     }
 
     protected override void Update(GameTime gameTime)
@@ -67,14 +75,6 @@ public class DungeonSlimeGame : Core
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
-        SpriteBatch.DrawString(_font, "Hello World", new Vector2(100, 100), Color.White);
-#if OPENGL
-        SpriteBatch.DrawString(_font, "OpenGL", new Vector2(132, 135), Color.Blue);
-#endif
-
-#if DIRECTX
-        SpriteBatch.DrawString(_font, "DirectX", new Vector2(132, 135), Color.Green);
-#endif
 
         SpriteBatch.Draw(
             _logo,
@@ -92,6 +92,15 @@ public class DungeonSlimeGame : Core
 
         _slime.Draw(SpriteBatch, _slimePosition);
         _bat.Draw(SpriteBatch, new Vector2(300f, 300f));
+
+        SpriteBatch.DrawString(_font, "Hello World", new Vector2(100, 100), Color.White);
+#if OPENGL
+        SpriteBatch.DrawString(_font, "OpenGL", new Vector2(132, 135), Color.Blue);
+#endif
+
+#if DIRECTX
+        SpriteBatch.DrawString(_font, "DirectX", new Vector2(132, 135), Color.Green);
+#endif
         SpriteBatch.End();
 
         base.Draw(gameTime);

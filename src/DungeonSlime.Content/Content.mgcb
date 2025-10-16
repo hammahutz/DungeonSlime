@@ -38,6 +38,9 @@
 #begin data/tilemap-definition.xml
 /copy:data/tilemap-definition.xml
 
+#begin fonts/04B_30.ttf
+/copy:fonts/04B_30.ttf
+
 #begin fonts/font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
