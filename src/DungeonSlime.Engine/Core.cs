@@ -1,13 +1,15 @@
 using System;
-using DungeonSlime.Engine.Audio;
-using DungeonSlime.Engine.Input;
-using DungeonSlime.Engine.Input.Commands;
-using DungeonSlime.Engine.Utils.Logging;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
+using DungeonSlime.Engine.Audio;
+using DungeonSlime.Engine.Input;
+using DungeonSlime.Engine.Input.Commands;
+using DungeonSlime.Engine.Utils.Logging;
+using DungeonSlime.Engine.Scenes;
 
 namespace DungeonSlime.Engine;
 
@@ -20,11 +22,13 @@ public abstract class Core : Game
 
     public static GraphicsDeviceManager Graphics { get; private set; }
     public static new GraphicsDevice GraphicsDevice { get; private set; }
-    public SpriteBatch SpriteBatch { get; private set; }
-    public static new ContentManager Content { get; private set; }
+    public static SpriteBatch SpriteBatch { get; private set; }
 
-    public InputManager Input { get; private set; }
-    public AudioController Audio { get; private set; }
+    public static new ContentManager Content { get; private set; }
+    public static InputManager Input { get; private set; }
+    public static AudioController Audio { get; private set; }
+    public static SceneDirector Scenes { get; private set; }
+
     public bool ExitOnEscape { get; }
 
     public Core(string title, int width = 800, int height = 600, bool fullScreen = false)
@@ -76,17 +80,9 @@ public abstract class Core : Game
         SpriteBatch = new SpriteBatch(GraphicsDevice);
         Input = new InputManager();
         Audio = new AudioController();
+        Scenes = new SceneDirector();
 
-        // Register default commands
         RegisterDefaultCommands();
-
-        Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Escape, InputTrigger.JustPressed, () =>
-        {
-            if (ExitOnEscape && Input.Keyboard.IsDown(Keys.Escape))
-            {
-                Exit();
-            }
-        }));
     }
 
     protected abstract void RegisterDefaultCommands();
@@ -95,13 +91,21 @@ public abstract class Core : Game
     {
         Input.Update(gameTime);
         Audio.Update();
+        Scenes.Update(gameTime);
         base.Update(gameTime);
     }
+
+    protected override void Draw(GameTime gameTime)
+    {
+        Scenes.Draw(gameTime);
+        base.Draw(gameTime);
+    }
+
 
     protected override void UnloadContent()
     {
         Audio.Dispose();
-
+        Scenes.Dispose();
         base.UnloadContent();
     }
 

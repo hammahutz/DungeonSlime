@@ -48,6 +48,13 @@
 /processorParam:TextureFormat=Compressed
 /build:fonts/font.spritefont
 
+#begin fonts/fontTitle.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/fontTitle.spritefont
+
 #begin images/atlas.png
 /importer:TextureImporter
 /processor:TextureProcessor
