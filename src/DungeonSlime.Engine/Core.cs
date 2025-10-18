@@ -23,8 +23,8 @@ public abstract class Core : Game
     public static GraphicsDeviceManager Graphics { get; private set; }
     public static new GraphicsDevice GraphicsDevice { get; private set; }
     public static SpriteBatch SpriteBatch { get; private set; }
+    public new ContentManager Content { get; private set; }
 
-    public static new ContentManager Content { get; private set; }
     public static InputManager Input { get; private set; }
     public static AudioController Audio { get; private set; }
     public static SceneDirector Scenes { get; private set; }

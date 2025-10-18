@@ -2,6 +2,7 @@ using DungeonSlime.Engine;
 using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Scenes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -28,6 +29,7 @@ public class TitleScene : Scene
 
     private Color _dropShadowColor = Color.Black * 0.5f;
 
+    public TitleScene(ContentManager content) : base(content) { }
     public override void Initialize()
     {
         base.Initialize();
@@ -49,15 +51,15 @@ public class TitleScene : Scene
 
         Core.Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Enter, InputTrigger.JustPressed, () =>
         {
-            Core.Scenes.ChangeScene(new GameScene());
+            Core.Scenes.ChangeScene(new GameScene(Content));
         }));
     }
 
     public override void LoadContent()
     {
         base.LoadContent();
-        _font = Core.Content.Load<SpriteFont>("fonts/font");
-        _fontTitle = Core.Content.Load<SpriteFont>("fonts/fontTitle");
+        _font = Content.Load<SpriteFont>("fonts/font");
+        _fontTitle = Content.Load<SpriteFont>("fonts/fontTitle");
     }
 
     public override void Draw(GameTime gameTime)

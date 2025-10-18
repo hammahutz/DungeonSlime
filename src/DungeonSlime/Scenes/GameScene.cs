@@ -5,6 +5,7 @@ using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Scenes;
 using DungeonSlime.Engine.Utils.Logging;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -19,6 +20,7 @@ public class GameScene : Scene
 
     private Tilemap _tilemap;
 
+    public GameScene(ContentManager content) : base(content) { }
     public override void LoadContent()
     {
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "data", "atlas-definition.xml");
@@ -43,7 +45,6 @@ public class GameScene : Scene
 
     public override void Draw(GameTime gametime)
     {
-
         Core.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
         _tilemap.Draw(Core.SpriteBatch);
         _slime.Draw(Core.SpriteBatch, _slimePosition);

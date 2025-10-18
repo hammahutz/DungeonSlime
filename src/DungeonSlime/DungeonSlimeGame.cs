@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 using DungeonSlime.Engine;
@@ -20,7 +18,7 @@ public class DungeonSlimeGame : Core
     {
         base.Initialize();
         Audio.PlaySong(_themeSong);
-        Scenes.ChangeScene(new TitleScene());
+        Scenes.ChangeScene(new TitleScene(Content));
     }
 
     protected override void LoadContent()

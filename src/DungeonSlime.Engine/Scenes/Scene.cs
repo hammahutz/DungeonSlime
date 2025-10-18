@@ -9,10 +9,10 @@ public abstract class Scene : IDisposable
     protected ContentManager Content { get; }
     public bool IsDisposed { get; private set; }
 
-    public Scene()
+    public Scene(ContentManager content)
     {
-        Content = new ContentManager(Core.Content.ServiceProvider);
-        Content.RootDirectory = Core.Content.RootDirectory;
+        Content = new ContentManager(content.ServiceProvider);
+        Content.RootDirectory = content.RootDirectory;
     }
     ~Scene() => Dispose();
 

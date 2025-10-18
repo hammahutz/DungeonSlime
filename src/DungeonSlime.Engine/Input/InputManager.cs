@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using System.Diagnostics;
-
 using DungeonSlime.Engine.Input.Commands;
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 
 namespace DungeonSlime.Engine.Input;
 
