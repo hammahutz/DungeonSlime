@@ -12,6 +12,7 @@ public class InputManager
 
 
     public CommandHandler Commands { get; private set; }
+    public CommandHandler GlobalCommands { get; private set; }
 
     public InputManager()
     {
@@ -20,6 +21,7 @@ public class InputManager
         GamePads = new GamePadInfo[4];
 
         Commands = new CommandHandler();
+        GlobalCommands = new CommandHandler();
     }
     public InputManager(bool includeKeyboard, bool includeMouse, int gamePadCount)
     {
@@ -50,5 +52,9 @@ public class InputManager
             }
         }
         Commands.Update(Keyboard, Mouse, GamePads);
+        GlobalCommands.Update(Keyboard, Mouse, GamePads);
     }
+
+    public void Flush() => Commands = new CommandHandler();
+    public void GlobalFlush() => GlobalCommands = new CommandHandler();
 }

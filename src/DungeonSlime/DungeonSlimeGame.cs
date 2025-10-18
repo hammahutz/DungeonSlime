@@ -28,7 +28,7 @@ public class DungeonSlimeGame : Core
 
     protected override void RegisterDefaultCommands()
     {
-        Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Escape, InputTrigger.JustPressed, () =>
+        Input.GlobalCommands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Escape, InputTrigger.JustPressed, () =>
         {
             if (ExitOnEscape && Input.Keyboard.IsDown(Keys.Escape))
             {

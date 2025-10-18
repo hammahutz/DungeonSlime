@@ -1,4 +1,5 @@
 using DungeonSlime.Engine;
+using DungeonSlime.Engine.Extensions;
 using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Scenes;
 using Microsoft.Xna.Framework;
@@ -16,6 +17,7 @@ public class TitleScene : Scene
 
     private SpriteFont _font;
     private SpriteFont _fontTitle;
+    private Color _dropShadowColor = Color.Black * 0.5f;
 
 
     private Vector2 _dungeonTextPosition;
@@ -27,7 +29,11 @@ public class TitleScene : Scene
     private Vector2 _pressEnterTextPosition;
     private Vector2 _pressEnterTextOrigin;
 
-    private Color _dropShadowColor = Color.Black * 0.5f;
+    private Texture2D _backgroundPattern;
+    private Rectangle _backgroundDestination;
+    private Vector2 _backgroundOffset;
+    private float _scollSpeed = 50.0f;
+
 
     public TitleScene(ContentManager content) : base(content) { }
     public override void Initialize()
@@ -49,6 +55,13 @@ public class TitleScene : Scene
         _pressEnterTextPosition = new Vector2(640, 720 - padding - sizeEnterText.Y / 2);
         _pressEnterTextOrigin = sizeEnterText * 0.5f;
 
+
+        _backgroundOffset = Vector2.Zero;
+        _backgroundDestination = Core.GraphicsDevice.PresentationParameters.Bounds;
+    }
+
+    public override void RegisterCommands()
+    {
         Core.Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Enter, InputTrigger.JustPressed, () =>
         {
             Core.Scenes.ChangeScene(new GameScene(Content));
@@ -60,12 +73,28 @@ public class TitleScene : Scene
         base.LoadContent();
         _font = Content.Load<SpriteFont>("fonts/font");
         _fontTitle = Content.Load<SpriteFont>("fonts/fontTitle");
+        _backgroundPattern = Content.Load<Texture2D>("images/background-pattern");
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        float offset = _scollSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        _backgroundOffset.X -= offset;
+        _backgroundOffset.Y -= offset;
+        _backgroundOffset.X %= _backgroundPattern.Width;
+        _backgroundOffset.Y %= _backgroundPattern.Height;
+
     }
 
     public override void Draw(GameTime gameTime)
     {
-        Core.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
         Core.GraphicsDevice.Clear(new Color(32, 40, 78, 255));
+
+        Core.SpriteBatch.Begin(samplerState: SamplerState.PointWrap);
+        Core.SpriteBatch.Draw(_backgroundPattern, _backgroundDestination, new Rectangle(_backgroundOffset.ToPoint(), _backgroundDestination.Size), Color.White * 0.5f);
+        Core.SpriteBatch.End();
+
+        Core.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
         Core.SpriteBatch.DrawString(_fontTitle, DUNGEON_TEXT, _dungeonTextPosition + new Vector2(10, 10), _dropShadowColor, 0.0f, _dungeonTextOrigin, 1.0f, SpriteEffects.None, 1.0f);
         Core.SpriteBatch.DrawString(_fontTitle, DUNGEON_TEXT, _dungeonTextPosition, Color.White, 0.0f, _dungeonTextOrigin, 1.0f, SpriteEffects.None, 1.0f);

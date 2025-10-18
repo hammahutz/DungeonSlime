@@ -3,13 +3,12 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 using DungeonSlime.Engine.Audio;
 using DungeonSlime.Engine.Input;
-using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Utils.Logging;
 using DungeonSlime.Engine.Scenes;
+using DungeonSlime.Engine.Input.Commands;
 
 namespace DungeonSlime.Engine;
 
@@ -85,7 +84,7 @@ public abstract class Core : Game
         RegisterDefaultCommands();
     }
 
-    protected abstract void RegisterDefaultCommands();
+    protected virtual void RegisterDefaultCommands() { }
 
     override protected void Update(GameTime gameTime)
     {

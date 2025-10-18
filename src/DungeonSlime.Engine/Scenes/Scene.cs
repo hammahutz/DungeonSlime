@@ -24,9 +24,11 @@ public abstract class Scene : IDisposable
     }
     public virtual void RegisterCommands() { }
     public virtual void LoadContent() { }
-    public virtual void UnLoadContent() => Content.Unload();
-    public virtual void Update(GameTime gametime) { }
-    public virtual void Draw(GameTime gametime) { }
+    public virtual void UnloadContent() => Content.Unload();
+    public virtual void Update(GameTime gameTime) { }
+    public virtual void Draw(GameTime gameTime) { }
+    public virtual void UnregisterCommands() => Core.Input.Flush();
+
 
     public void Dispose()
     {
@@ -43,8 +45,9 @@ public abstract class Scene : IDisposable
         if (disposing)
         {
             IsDisposed = true;
-            UnLoadContent();
+            UnloadContent();
             Content.Dispose();
+            UnregisterCommands();
         }
     }
 }

@@ -33,6 +33,7 @@ public class CommandHandler
             GamePadCommands.Add(command);
     }
 
+
     public void Update(KeyboardInfo keyboard, MouseInfo mouse, GamePadInfo[] gamePads)
     {
         foreach (var command in KeyboardCommands)
