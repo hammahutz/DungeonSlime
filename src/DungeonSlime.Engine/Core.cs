@@ -8,7 +8,7 @@ using DungeonSlime.Engine.Audio;
 using DungeonSlime.Engine.Input;
 using DungeonSlime.Engine.Utils.Logging;
 using DungeonSlime.Engine.Scenes;
-using DungeonSlime.Engine.Input.Commands;
+using DungeonSlime.Engine.Ui;
 
 namespace DungeonSlime.Engine;
 
@@ -22,17 +22,17 @@ public abstract class Core : Game
     public static GraphicsDeviceManager Graphics { get; private set; }
     public static new GraphicsDevice GraphicsDevice { get; private set; }
     public static SpriteBatch SpriteBatch { get; private set; }
-    public new ContentManager Content { get; private set; }
+    public static new ContentManager Content { get; private set; }
 
     public static InputManager Input { get; private set; }
     public static AudioController Audio { get; private set; }
     public static SceneDirector Scenes { get; private set; }
+    public static GumUi UI { get; private set; }
 
     public bool ExitOnEscape { get; }
 
     public Core(string title, int width = 800, int height = 600, bool fullScreen = false)
     {
-        Logger.Info("Init Core");
         SetInstance();
         SetWindow(width, height, fullScreen, title);
         SetContent();
@@ -80,6 +80,7 @@ public abstract class Core : Game
         Input = new InputManager();
         Audio = new AudioController();
         Scenes = new SceneDirector();
+        UI = new GumUi(4.0f);
 
         RegisterDefaultCommands();
     }
@@ -91,12 +92,14 @@ public abstract class Core : Game
         Input.Update(gameTime);
         Audio.Update();
         Scenes.Update(gameTime);
+        UI.Update(gameTime);
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
         Scenes.Draw(gameTime);
+        UI.Draw();
         base.Draw(gameTime);
     }
 

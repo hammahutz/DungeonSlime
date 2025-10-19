@@ -3,7 +3,8 @@ using Microsoft.Xna.Framework.Media;
 
 using DungeonSlime.Engine;
 using DungeonSlime.Engine.Input.Commands;
-using DungeonSlime.Scenes;
+using DungeonSlime.Scenes.Title;
+
 
 
 namespace DungeonSlime;
@@ -37,4 +38,5 @@ public class DungeonSlimeGame : Core
         }));
 
     }
+
 }

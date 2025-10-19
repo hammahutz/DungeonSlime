@@ -1,13 +1,18 @@
-using DungeonSlime.Engine;
-using DungeonSlime.Engine.Extensions;
-using DungeonSlime.Engine.Input.Commands;
-using DungeonSlime.Engine.Scenes;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
-namespace DungeonSlime.Scenes;
+
+using DungeonSlime.Engine;
+using DungeonSlime.Engine.Input.Commands;
+using DungeonSlime.Engine.Scenes;
+
+using DungeonSlime.Scenes.Game;
+
+
+namespace DungeonSlime.Scenes.Title;
 
 public class TitleScene : Scene
 {
@@ -34,8 +39,11 @@ public class TitleScene : Scene
     private Vector2 _backgroundOffset;
     private float _scollSpeed = 50.0f;
 
+    protected override ISceneUI SceneUI => new TitleUI();
 
+   
     public TitleScene(ContentManager content) : base(content) { }
+
     public override void Initialize()
     {
         base.Initialize();
@@ -50,11 +58,6 @@ public class TitleScene : Scene
         Vector2 sizeSlimeText = _fontTitle.MeasureString(SLIME_TEXT);
         _slimeTextPosition = new Vector2(640, _dungeonTextPosition.Y + sizeDugeonText.Y / 2 + sizeSlimeText.Y / 2 + gap);
         _slimeTextOrigin = sizeSlimeText * 0.5f;
-
-        Vector2 sizeEnterText = _font.MeasureString(PRESS_ENTER_TEXT);
-        _pressEnterTextPosition = new Vector2(640, 720 - padding - sizeEnterText.Y / 2);
-        _pressEnterTextOrigin = sizeEnterText * 0.5f;
-
 
         _backgroundOffset = Vector2.Zero;
         _backgroundDestination = Core.GraphicsDevice.PresentationParameters.Bounds;
@@ -106,4 +109,6 @@ public class TitleScene : Scene
         Core.SpriteBatch.DrawString(_font, PRESS_ENTER_TEXT, _pressEnterTextPosition, Color.White, 0.0f, _pressEnterTextOrigin, 1.0f, SpriteEffects.None, 1.0f);
         Core.SpriteBatch.End();
     }
+
+    
 }

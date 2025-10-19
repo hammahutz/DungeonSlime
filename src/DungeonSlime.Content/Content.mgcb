@@ -32,6 +32,12 @@
 /processorParam:Quality=Best
 /build:audio/theme.ogg
 
+#begin audio/ui.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/ui.wav
+
 #begin data/atlas-definition.xml
 /copy:data/atlas-definition.xml
 

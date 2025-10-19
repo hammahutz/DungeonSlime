@@ -8,6 +8,7 @@ public abstract class Scene : IDisposable
 {
     protected ContentManager Content { get; }
     public bool IsDisposed { get; private set; }
+    protected virtual ISceneUI SceneUI {get;}
 
     public Scene(ContentManager content)
     {
@@ -21,9 +22,16 @@ public abstract class Scene : IDisposable
     {
         RegisterCommands();
         LoadContent();
+        LoadUI();
     }
+
     public virtual void RegisterCommands() { }
     public virtual void LoadContent() { }
+    public virtual void LoadUI() 
+    { 
+        Core.UI.Clear();
+        SceneUI?.Load(Content);
+    }
     public virtual void UnloadContent() => Content.Unload();
     public virtual void Update(GameTime gameTime) { }
     public virtual void Draw(GameTime gameTime) { }
