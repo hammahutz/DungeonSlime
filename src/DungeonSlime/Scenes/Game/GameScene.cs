@@ -3,6 +3,7 @@ using DungeonSlime.Engine.Graphics;
 using DungeonSlime.Engine.Input;
 using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Scenes;
+using DungeonSlime.Engine.UI;
 using DungeonSlime.Engine.Utils.Logging;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -18,9 +19,13 @@ public class GameScene : Scene
     private Vector2 _slimePosition = new(100, 200);
     private Vector2 _slimeVelocity = new(0, 0);
 
-    private Tilemap _tilemap;
+    private GameUI _ui;
 
-    public GameScene(ContentManager content) : base(content) { }
+    private Tilemap _tilemap;
+    protected override BaseUI UI => _ui;
+
+    public GameScene(ContentManager content) : base(content) {}
+
     public override void LoadContent()
     {
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "data", "atlas-definition.xml");
@@ -33,6 +38,8 @@ public class GameScene : Scene
 
         _tilemap = Tilemap.FromFile(Content, "data/tilemap-definition.xml");
         _tilemap.Scale = new Vector2(4.0f);
+
+        _ui = new GameUI(Content);
     }
 
     public override void Update(GameTime gameTime)
@@ -79,6 +86,15 @@ public class GameScene : Scene
         {
             Logger.Info("Mouse Left Released");
             _slimePosition = Core.Input.Mouse.Position.ToVector2();
+        }));
+
+        Core.Input.Commands.RegisterKeyboardCommand(new Command<KeyboardState, Keys>(Keys.Q, InputTrigger.JustPressed, () =>
+        {
+            _ui.PauseGame();
+        }));
+        Core.Input.Commands.RegisterGamePadCommand(new Command<GamePadState, Buttons>(Buttons.Start, InputTrigger.JustPressed, () => 
+        {
+            _ui.PauseGame();
         }));
     }
 }

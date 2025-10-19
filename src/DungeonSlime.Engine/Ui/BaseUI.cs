@@ -19,6 +19,6 @@ public abstract class BaseUI
     }
 
     protected virtual void LoadContent() {}
-    public abstract void AddViews();
-    public abstract void AddLogic();
+    protected abstract void AddViews();
+    protected abstract void AddLogic();
 }

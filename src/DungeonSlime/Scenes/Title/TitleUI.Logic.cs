@@ -8,7 +8,7 @@ namespace DungeonSlime.Scenes.Title;
 
 public partial class TitleUI
 {
-    public override void AddLogic()
+    protected override void AddLogic()
     {
         _startButton.Click += HandleStartClicked;
         _optionsButton.Click += HandleOptionsClicked;

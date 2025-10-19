@@ -1,6 +1,5 @@
 namespace DungeonSlime.Scenes.Title;
 
-using System;
 using DungeonSlime.Engine;
 using Gum.Forms.Controls;
 using MonoGameGum;
@@ -19,7 +18,7 @@ public partial class TitleUI
     private Slider _sfxSlider;
     
 
-    public override void AddViews()
+    protected override void AddViews()
     {
         CreateTitlePanel();
         CreateOptionsPanel();
