@@ -1,4 +1,5 @@
 using System;
+using DungeonSlime.Engine.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
@@ -8,7 +9,7 @@ public abstract class Scene : IDisposable
 {
     protected ContentManager Content { get; }
     public bool IsDisposed { get; private set; }
-    protected virtual ISceneUI SceneUI {get;}
+    protected virtual BaseUI UI {get;}
 
     public Scene(ContentManager content)
     {
@@ -30,7 +31,7 @@ public abstract class Scene : IDisposable
     public virtual void LoadUI() 
     { 
         Core.UI.Clear();
-        SceneUI?.Load(Content);
+        UI?.Initliaze();
     }
     public virtual void UnloadContent() => Content.Unload();
     public virtual void Update(GameTime gameTime) { }

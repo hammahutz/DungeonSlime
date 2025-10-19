@@ -1,0 +1,97 @@
+namespace DungeonSlime.Scenes.Title;
+
+using System;
+using DungeonSlime.Engine;
+using Gum.Forms.Controls;
+using MonoGameGum;
+using MonoGameGum.GueDeriving;
+
+public partial class TitleUI
+{
+    private Panel _titleScreenButtonsPanelt;
+    private Button _startButton;
+    private Button _optionsButton;
+
+    private Panel _optionsPanel;
+    private TextRuntime _optionsText;
+    private Button _optionsBackButton;
+    private Slider _musicSlider;
+    private Slider _sfxSlider;
+    
+
+    public override void AddViews()
+    {
+        CreateTitlePanel();
+        CreateOptionsPanel();
+    }
+
+    private void CreateTitlePanel()
+    {
+        _titleScreenButtonsPanelt = new Panel();
+        _titleScreenButtonsPanelt.Dock(Gum.Wireframe.Dock.Fill);
+        _titleScreenButtonsPanelt.AddToRoot();
+
+        _startButton = new Button();
+        _startButton.Anchor(Gum.Wireframe.Anchor.BottomLeft);
+        _startButton.Visual.X = 50;
+        _startButton.Visual.Y = -12;
+        _startButton.Visual.Width = 70;
+        _startButton.Text = "Start";
+        _titleScreenButtonsPanelt.AddChild(_startButton);
+
+        _optionsButton = new Button();
+        _optionsButton.Anchor(Gum.Wireframe.Anchor.BottomRight);
+        _optionsButton.Visual.X = -50;
+        _optionsButton.Visual.Y = -12;
+        _optionsButton.Visual.Width = 70;
+        _optionsButton.Text = "Options";
+        _titleScreenButtonsPanelt.AddChild(_optionsButton);
+
+        _startButton.IsFocused = true;
+    }
+
+
+    private void CreateOptionsPanel()
+    {
+        _optionsPanel = new Panel();
+        _optionsPanel.Dock(Gum.Wireframe.Dock.Fill);
+        _optionsPanel.IsVisible = false;
+        _optionsPanel.AddToRoot();
+
+        _optionsText = new TextRuntime();
+        _optionsText.X = 10;
+        _optionsText.Y = 10;
+        _optionsText.Text = "OPTIONS";
+        _optionsPanel.AddChild(_optionsText);
+
+        _musicSlider = new Slider();
+        _musicSlider.Anchor(Gum.Wireframe.Anchor.Top);
+        _musicSlider.Visual.Y = 30f;
+        _musicSlider.Minimum = 0;
+        _musicSlider.Maximum = 1;
+        _musicSlider.Value = Core.Audio.SongVolume;
+        _musicSlider.SmallChange = .1;
+        _musicSlider.LargeChange = .2;
+        _optionsPanel.AddChild(_musicSlider);
+
+        _sfxSlider = new Slider();
+        _sfxSlider.Anchor(Gum.Wireframe.Anchor.Top);
+        _sfxSlider.Visual.Y = 93;
+        _sfxSlider.Minimum = 0;
+        _sfxSlider.Maximum = 1;
+        _sfxSlider.Value = Core.Audio.SoundEffectVolume;
+        _sfxSlider.SmallChange = .1;
+        _sfxSlider.LargeChange = .2;
+        _optionsPanel.AddChild(_sfxSlider);
+
+        _optionsBackButton = new Button();
+        _optionsBackButton.Text = "BACK";
+        _optionsBackButton.Anchor(Gum.Wireframe.Anchor.BottomRight);
+        _optionsBackButton.X = -28f;
+        _optionsBackButton.Y = -10f;
+        _optionsPanel.AddChild(_optionsBackButton);
+    }
+
+
+
+}

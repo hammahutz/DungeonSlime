@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,6 +9,7 @@ using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Scenes;
 
 using DungeonSlime.Scenes.Game;
+using DungeonSlime.Engine.UI;
 
 
 namespace DungeonSlime.Scenes.Title;
@@ -39,8 +39,7 @@ public class TitleScene : Scene
     private Vector2 _backgroundOffset;
     private float _scollSpeed = 50.0f;
 
-    protected override ISceneUI SceneUI => new TitleUI();
-
+    protected override BaseUI UI => new TitleUI(Content);
    
     public TitleScene(ContentManager content) : base(content) { }
 

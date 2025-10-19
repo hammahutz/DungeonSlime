@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGameGum;
 
-namespace DungeonSlime.Engine.Ui;
+namespace DungeonSlime.Engine.UI;
 
 public class GumUi
 {

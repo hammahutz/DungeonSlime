@@ -8,7 +8,7 @@ using DungeonSlime.Engine.Audio;
 using DungeonSlime.Engine.Input;
 using DungeonSlime.Engine.Utils.Logging;
 using DungeonSlime.Engine.Scenes;
-using DungeonSlime.Engine.Ui;
+using DungeonSlime.Engine.UI;
 
 namespace DungeonSlime.Engine;
 
