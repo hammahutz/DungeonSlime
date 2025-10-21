@@ -1,1 +1,1 @@
-dotnet run --project src/DungeonSlime.OpenGL -p:DefineConstants="DIRECTX"
+dotnet run --project src/DungeonSlime.DirectX -p:DefineConstants="DIRECTX"
