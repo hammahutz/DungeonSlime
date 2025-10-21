@@ -6,6 +6,7 @@ namespace DungeonSlime.Scenes.Game;
 public partial class GameUI : Engine.UI.BaseUI
 {
     private SoundEffect _uiSoundEffect;
+    public bool IsPaused { get; private set; }
 
     public GameUI(ContentManager content) : base(content) {}
 

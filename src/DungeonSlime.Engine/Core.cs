@@ -29,7 +29,8 @@ public abstract class Core : Game
     public static SceneDirector Scenes { get; private set; }
     public static GumUi UI { get; private set; }
 
-    public bool ExitOnEscape { get; }
+    public static bool ExitOnEscape { get; private set;}
+    public static bool IsPaused { get; set; }
 
     public Core(string title, int width = 800, int height = 600, bool fullScreen = false)
     {
@@ -39,6 +40,7 @@ public abstract class Core : Game
 
         IsMouseVisible = true;
         ExitOnEscape = true;
+        IsPaused = false;
     }
 
     private void SetInstance()
@@ -89,10 +91,15 @@ public abstract class Core : Game
 
     override protected void Update(GameTime gameTime)
     {
-        Input.Update(gameTime);
         Audio.Update();
-        Scenes.Update(gameTime);
         UI.Update(gameTime);
+        
+        if (!IsPaused)
+        {
+            Input.Update(gameTime);
+            Scenes.Update(gameTime);
+        }
+
         base.Update(gameTime);
     }
 
