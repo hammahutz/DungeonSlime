@@ -40,7 +40,7 @@ public class TitleScene : Scene
     private float _scollSpeed = 50.0f;
 
     protected override BaseUI UI => new TitleUI(Content);
-   
+
     public TitleScene(ContentManager content) : base(content) { }
 
     public override void Initialize()
@@ -109,5 +109,5 @@ public class TitleScene : Scene
         Core.SpriteBatch.End();
     }
 
-    
+
 }

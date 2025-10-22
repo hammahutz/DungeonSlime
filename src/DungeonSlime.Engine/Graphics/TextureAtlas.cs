@@ -29,7 +29,7 @@ public class TextureAtlas
         _animations = new Dictionary<string, Animation>();
     }
 
-    public void AddRegion(string name, int x, int y, int width, int height) => _regions.Add(name, new TextureRegion(Texture, x, y, width, height));
+    public void AddRegion(string name, int x, int y, int width, int height) => _regions.Add(name, new TextureRegion(name, Texture, x, y, width, height));
 
     public void AddAnimation(string animationName, Animation animation) => _animations.Add(animationName, animation);
 
@@ -144,7 +144,7 @@ public class TextureAtlas
                             var name = animationElement.Attribute("name")?.Value;
                             var delay = TimeSpan.FromMilliseconds(float.Parse(animationElement.Attribute("delay")?.Value ?? "100"));
 
-                            atlas.AddAnimation(name, new Animation(frames, delay));
+                            atlas.AddAnimation(name, new Animation(name, frames, delay));
                         }
                     }
                 }

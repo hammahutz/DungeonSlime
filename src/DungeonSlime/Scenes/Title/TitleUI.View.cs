@@ -1,13 +1,17 @@
 namespace DungeonSlime.Scenes.Title;
 
 using DungeonSlime.Engine;
+using DungeonSlime.Engine.Graphics;
+using DungeonSlime.UI;
+
 using Gum.Forms.Controls;
+
 using MonoGameGum;
 using MonoGameGum.GueDeriving;
 
 public partial class TitleUI
 {
-    private Panel _titleScreenButtonsPanelt;
+    private Panel _titleScreenButtonsPanel;
     private Button _startButton;
     private Button _optionsButton;
 
@@ -16,7 +20,7 @@ public partial class TitleUI
     private Button _optionsBackButton;
     private Slider _musicSlider;
     private Slider _sfxSlider;
-    
+
 
     protected override void AddViews()
     {
@@ -26,25 +30,25 @@ public partial class TitleUI
 
     private void CreateTitlePanel()
     {
-        _titleScreenButtonsPanelt = new Panel();
-        _titleScreenButtonsPanelt.Dock(Gum.Wireframe.Dock.Fill);
-        _titleScreenButtonsPanelt.AddToRoot();
+        _titleScreenButtonsPanel = new Panel();
+        _titleScreenButtonsPanel.Dock(Gum.Wireframe.Dock.Fill);
+        _titleScreenButtonsPanel.AddToRoot();
 
-        _startButton = new Button();
+        _startButton = _animatedButtonFactory.Build();
         _startButton.Anchor(Gum.Wireframe.Anchor.BottomLeft);
         _startButton.Visual.X = 50;
         _startButton.Visual.Y = -12;
         _startButton.Visual.Width = 70;
         _startButton.Text = "Start";
-        _titleScreenButtonsPanelt.AddChild(_startButton);
+        _titleScreenButtonsPanel.AddChild(_startButton);
 
-        _optionsButton = new Button();
+        _optionsButton = _animatedButtonFactory.Build();
         _optionsButton.Anchor(Gum.Wireframe.Anchor.BottomRight);
         _optionsButton.Visual.X = -50;
         _optionsButton.Visual.Y = -12;
         _optionsButton.Visual.Width = 70;
         _optionsButton.Text = "Options";
-        _titleScreenButtonsPanelt.AddChild(_optionsButton);
+        _titleScreenButtonsPanel.AddChild(_optionsButton);
 
         _startButton.IsFocused = true;
     }
@@ -83,7 +87,7 @@ public partial class TitleUI
         _sfxSlider.LargeChange = .2;
         _optionsPanel.AddChild(_sfxSlider);
 
-        _optionsBackButton = new Button();
+        _optionsBackButton = _animatedButtonFactory.Build();
         _optionsBackButton.Text = "BACK";
         _optionsBackButton.Anchor(Gum.Wireframe.Anchor.BottomRight);
         _optionsBackButton.X = -28f;

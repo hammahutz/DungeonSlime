@@ -39,7 +39,7 @@ public class GameScene : Scene
         _tilemap = Tilemap.FromFile(Content, "data/tilemap-definition.xml");
         _tilemap.Scale = new Vector2(4.0f);
 
-        _ui = new GameUI(Content);
+        _ui = new GameUI(Content, atlas);
     }
 
     public override void Update(GameTime gameTime)
@@ -92,7 +92,7 @@ public class GameScene : Scene
         {
             _ui.PauseGame();
         }));
-        Core.Input.Commands.RegisterGamePadCommand(new Command<GamePadState, Buttons>(Buttons.Start, InputTrigger.JustPressed, () => 
+        Core.Input.Commands.RegisterGamePadCommand(new Command<GamePadState, Buttons>(Buttons.Start, InputTrigger.JustPressed, () =>
         {
             _ui.PauseGame();
         }));

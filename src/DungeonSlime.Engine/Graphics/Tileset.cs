@@ -29,7 +29,7 @@ public class Tileset
         {
             int x = i % Columns * tileWidth;
             int y = i / Columns * tileHeight;
-            _tiles[i] = new TextureRegion(textureRegion.Texture, textureRegion.SourceRectangle.X + x, textureRegion.SourceRectangle.Y + y, tileWidth, tileHeight);
+            _tiles[i] = new TextureRegion($"{textureRegion.Name}-{i}", textureRegion.Texture, textureRegion.SourceRectangle.X + x, textureRegion.SourceRectangle.Y + y, tileWidth, tileHeight);
         }
     }
 
@@ -41,6 +41,7 @@ public class Tileset
         XElement root = document.Root;
         XElement tilesetElement = root.Element("Tileset");
 
+        string name = tilesetElement.Attribute("name").Value;
         string regionAttribute = tilesetElement.Attribute("region").Value;
         string[] split = regionAttribute.Split(" ", StringSplitOptions.RemoveEmptyEntries);
         int x = int.Parse(split[0]);
@@ -52,7 +53,7 @@ public class Tileset
         int tileHeight = int.Parse(tilesetElement.Attribute("tileHeight").Value);
         string contentPath = tilesetElement.Value;
         Texture2D texture = content.Load<Texture2D>(contentPath);
-        TextureRegion textureRegion = new TextureRegion(texture, x, y, width, height);
+        TextureRegion textureRegion = new TextureRegion(name, texture, x, y, width, height);
 
         return new Tileset(textureRegion, tileWidth, tileHeight);
     }

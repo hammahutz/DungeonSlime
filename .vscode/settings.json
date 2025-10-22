@@ -18,24 +18,5 @@
     },
     "explorerExclude.backup": {},
     "terminal.integrated.cursorBlinking": true,
-    "docwriter.style": "Auto-detect",
-    "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#7250df",
-        "activityBar.background": "#7250df",
-        "activityBar.foreground": "#e7e7e7",
-        "activityBar.inactiveForeground": "#e7e7e799",
-        "activityBarBadge.background": "#e69278",
-        "activityBarBadge.foreground": "#15202b",
-        "commandCenter.border": "#e7e7e799",
-        "sash.hoverBorder": "#7250df",
-        "statusBar.background": "#5027d5",
-        "statusBar.foreground": "#e7e7e7",
-        "statusBarItem.hoverBackground": "#7250df",
-        "statusBarItem.remoteBackground": "#5027d5",
-        "statusBarItem.remoteForeground": "#e7e7e7",
-        "titleBar.activeBackground": "#5027d5",
-        "titleBar.activeForeground": "#e7e7e7",
-        "titleBar.inactiveBackground": "#5027d599",
-        "titleBar.inactiveForeground": "#e7e7e799"
-    }
+    "docwriter.style": "Auto-detect"
 }

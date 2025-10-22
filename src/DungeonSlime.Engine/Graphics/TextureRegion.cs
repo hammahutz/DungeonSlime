@@ -5,6 +5,7 @@ namespace DungeonSlime.Engine.Graphics;
 
 public class TextureRegion
 {
+    public string Name { get; }
     public Texture2D Texture { get; set; }
     public Rectangle SourceRectangle { get; set; }
     public int Width => SourceRectangle.Width;
@@ -15,8 +16,9 @@ public class TextureRegion
     public float LeftTextureCoordinate => SourceRectangle.Left / (float)Texture.Width;
     public float RightTextureCoordinate => SourceRectangle.Right / (float)Texture.Width;
 
-    public TextureRegion(Texture2D texture, int x, int y, int width, int height)
+    public TextureRegion(string name, Texture2D texture, int x, int y, int width, int height)
     {
+        Name = name;
         Texture = texture;
         SourceRectangle = new Rectangle(x, y, width, height);
     }

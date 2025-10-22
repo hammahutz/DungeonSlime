@@ -16,11 +16,11 @@ public partial class GameUI
 
     protected override void AddViews()
     {
-        _pausePanel = new Panel(); 
-        _resumeButton = new Button();
+        _pausePanel = new Panel();
+        _resumeButton = _animatedButtonFactory.Build();
         _background = new ColoredRectangleRuntime();
         _text = new TextRuntime();
-        _quitButton = new Button();
+        _quitButton = _animatedButtonFactory.Build();
 
         _pausePanel.Anchor(Anchor.Center);
         _pausePanel.Visual.WidthUnits = Gum.DataTypes.DimensionUnitType.Absolute;
@@ -33,7 +33,7 @@ public partial class GameUI
         _background.Dock(Dock.Fill);
         _background.Color = Color.DarkBlue;
         _pausePanel.AddChild(_background);
-        
+
         _text.Text = "PAUSED";
         _text.X = 10f;
         _text.Y = 10f;

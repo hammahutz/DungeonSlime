@@ -1,6 +1,8 @@
 using System;
+
 using DungeonSlime.Engine;
 using DungeonSlime.Scenes.Game;
+
 using Gum.Forms.Controls;
 
 namespace DungeonSlime.Scenes.Title;
@@ -31,7 +33,7 @@ public partial class TitleUI
     private void HandleOptionsClicked(object sender, EventArgs e)
     {
         Core.Audio.PlaySoundEffect(_uiSoundEffect);
-        _titleScreenButtonsPanelt.IsVisible = false;
+        _titleScreenButtonsPanel.IsVisible = false;
         _optionsPanel.IsVisible = true;
         _optionsBackButton.IsFocused = true;
     }
@@ -45,7 +47,7 @@ public partial class TitleUI
     {
         Core.Audio.PlaySoundEffect(_uiSoundEffect);
 
-        _titleScreenButtonsPanelt.IsVisible = true;
+        _titleScreenButtonsPanel.IsVisible = true;
         _optionsPanel.IsVisible = false;
 
         _optionsButton.IsFocused = true;

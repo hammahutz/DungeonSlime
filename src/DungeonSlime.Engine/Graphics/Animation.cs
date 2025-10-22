@@ -8,15 +8,18 @@ public class Animation
 {
     public List<TextureRegion> Frames { get; private set; }
     public TimeSpan Delay { get; private set; }
+    public string Name { get; }
 
-    public Animation()
+    public Animation(string name)
     {
+        Name = name;
         Frames = new List<TextureRegion>();
         Delay = TimeSpan.FromMilliseconds(100);
     }
 
-    public Animation(List<TextureRegion> frames, TimeSpan delay)
+    public Animation(string name, List<TextureRegion> frames, TimeSpan delay)
     {
+        Name = name;
         Frames = frames ?? throw new ArgumentNullException(nameof(frames));
         Delay = delay;
     }
