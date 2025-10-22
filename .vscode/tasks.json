@@ -11,7 +11,7 @@
                 "src/DungeonSlime.OpenGL/DungeonSlime.OpenGL.csproj"
             ],
             "group": "build",
-            "problemMatcher": []
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "buildDirectX",
@@ -23,7 +23,7 @@
                 "src/DungeonSlime.DirectX/DungeonSlime.DirectX.csproj"
             ],
             "group": "build",
-            "problemMatcher": []
+            "problemMatcher": "$msCompile"
         }
     ]
 }

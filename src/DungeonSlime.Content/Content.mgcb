@@ -44,6 +44,9 @@
 #begin data/tilemap-definition.xml
 /copy:data/tilemap-definition.xml
 
+#begin fonts/04b_30.fnt
+/copy:fonts/04b_30.fnt
+
 #begin fonts/04B_30.ttf
 /copy:fonts/04B_30.ttf
 
