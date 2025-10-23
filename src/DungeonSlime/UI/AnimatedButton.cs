@@ -1,10 +1,7 @@
 using System;
-using System.Runtime.CompilerServices;
-using System.Threading;
 
-using DungeonSlime.Engine;
-using DungeonSlime.Engine.Graphics;
-using DungeonSlime.Engine.Input.Commands;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 using Gum.DataTypes;
 using Gum.DataTypes.Variables;
@@ -14,9 +11,7 @@ using Gum.Graphics.Animation;
 using Gum.Managers;
 using Gum.Wireframe;
 
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using DungeonSlime.Engine.Graphics;
 
 using MonoGameGum.GueDeriving;
 
@@ -51,11 +46,9 @@ class AnimatedButton : Button
 }
 class AnimatedButtonFactory
 {
-
     public TextureAtlas TextureAtlas { get; private set; }
     public BaseAnimationChain Enable { get; private set; }
     public BaseAnimationChain Focus { get; private set; }
-
 
     public AnimatedButtonFactory(TextureAtlas textureAtlas, BaseAnimationChain enable, BaseAnimationChain focus)
     {

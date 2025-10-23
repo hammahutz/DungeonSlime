@@ -18,8 +18,8 @@ public partial class TitleUI
     private Panel _optionsPanel;
     private TextRuntime _optionsText;
     private Button _optionsBackButton;
-    private Slider _musicSlider;
-    private Slider _sfxSlider;
+    private OptionsSlider _musicSlider;
+    private OptionsSlider _sfxSlider;
 
 
     protected override void AddViews()
@@ -61,23 +61,31 @@ public partial class TitleUI
         _optionsPanel.IsVisible = false;
         _optionsPanel.AddToRoot();
 
-        _optionsText = new TextRuntime();
-        _optionsText.X = 10;
-        _optionsText.Y = 10;
-        _optionsText.Text = "OPTIONS";
+        _optionsText = new TextRuntime()
+        {
+            X = 10,
+            Y = 10,
+            Text = "OPTIONS",
+            UseCustomFont = true,
+            CustomFontFile = "fonts/04b_30.fnt",
+        };
         _optionsPanel.AddChild(_optionsText);
 
-        _musicSlider = new Slider();
-        _musicSlider.Anchor(Gum.Wireframe.Anchor.Top);
+        _musicSlider = new OptionsSlider(_textureAtlas)
+        {
+            Minimum = 0,
+            Maximum = 1,
+            Value = Core.Audio.SongVolume,
+            SmallChange = .1,
+            LargeChange = .2
+        };
         _musicSlider.Visual.Y = 30f;
-        _musicSlider.Minimum = 0;
-        _musicSlider.Maximum = 1;
-        _musicSlider.Value = Core.Audio.SongVolume;
-        _musicSlider.SmallChange = .1;
-        _musicSlider.LargeChange = .2;
+        _musicSlider.Anchor(Gum.Wireframe.Anchor.Top);
         _optionsPanel.AddChild(_musicSlider);
 
-        _sfxSlider = new Slider();
+        _sfxSlider = new OptionsSlider(_textureAtlas);
+        _sfxSlider.Name = "SfxSlider";
+        _sfxSlider.Text = "SFX";
         _sfxSlider.Anchor(Gum.Wireframe.Anchor.Top);
         _sfxSlider.Visual.Y = 93;
         _sfxSlider.Minimum = 0;

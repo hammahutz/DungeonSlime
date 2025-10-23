@@ -1,6 +1,11 @@
+using DungeonSlime.Engine.Graphics;
+
 using Gum.Forms.Controls;
+using Gum.Managers;
 using Gum.Wireframe;
+
 using Microsoft.Xna.Framework;
+
 using MonoGameGum;
 using MonoGameGum.GueDeriving;
 
@@ -30,6 +35,18 @@ public partial class GameUI
         _pausePanel.IsVisible = false;
         _pausePanel.AddToRoot();
 
+        TextureRegion backgroundRegion = _textureAtlas.GetRegion("panel-background");
+
+        NineSliceRuntime background = new NineSliceRuntime();
+        background.Dock(Dock.Fill);
+        background.Texture = backgroundRegion.Texture;
+        background.TextureAddress = TextureAddress.Custom;
+        background.TextureHeight = backgroundRegion.Height;
+        background.TextureLeft = backgroundRegion.SourceRectangle.Left;
+        background.TextureTop = backgroundRegion.SourceRectangle.Top;
+        background.TextureWidth = backgroundRegion.Width;
+        _pausePanel.AddChild(background);
+
         _background.Dock(Dock.Fill);
         _background.Color = Color.DarkBlue;
         _pausePanel.AddChild(_background);
@@ -37,6 +54,9 @@ public partial class GameUI
         _text.Text = "PAUSED";
         _text.X = 10f;
         _text.Y = 10f;
+        _text.CustomFontFile = @"fonts/04b_30.fnt";
+        _text.UseCustomFont = true;
+        _text.FontScale = 0.5f;
         _pausePanel.AddChild(_text);
 
         _resumeButton.Text = "RESUME";
