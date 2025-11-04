@@ -15,8 +15,8 @@ namespace DungeonSlime.UI;
 
 class OptionsSlider : Slider
 {
-    private ColoredRectangleRuntime _fillRectangle;
-    private TextRuntime _textInstance;
+    private readonly ColoredRectangleRuntime _fillRectangle;
+    private readonly TextRuntime _textInstance;
     public string Text { get => _textInstance.Text; set => _textInstance.Text = value; }
 
     public OptionsSlider(TextureAtlas atlas)

@@ -1,7 +1,9 @@
 using Gum.Forms;
 using Gum.Forms.Controls;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+
 using MonoGameGum;
 
 namespace DungeonSlime.Engine.UI;
@@ -16,8 +18,8 @@ public class GumUi
         FrameworkElement.KeyboardsForUiControl.Add(GumService.Default.Keyboard);
         FrameworkElement.GamePadsForUiControl.AddRange(GumService.Default.Gamepads);
 
-        FrameworkElement.TabReverseKeyCombos.Add(new KeyCombo() {PushedKey = Keys.Up});
-        FrameworkElement.TabKeyCombos.Add(new KeyCombo() {PushedKey = Keys.Down});
+        FrameworkElement.TabReverseKeyCombos.Add(new KeyCombo() { PushedKey = Keys.Up });
+        FrameworkElement.TabKeyCombos.Add(new KeyCombo() { PushedKey = Keys.Down });
 
         GumService.Default.CanvasWidth = Core.GraphicsDevice.PresentationParameters.BackBufferWidth / scale;
         GumService.Default.CanvasHeight = Core.GraphicsDevice.PresentationParameters.BackBufferHeight / scale;

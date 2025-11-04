@@ -1,4 +1,5 @@
 using System;
+
 using DungeonSlime.Engine;
 using DungeonSlime.Scenes.Title;
 
@@ -10,12 +11,14 @@ public partial class GameUI
 
     protected override void AddLogic()
     {
-        _resumeButton.Click += (object _, EventArgs _) => {
+        _resumeButton.Click += (object _, EventArgs _) =>
+        {
             Core.IsPaused = false;
             Core.Audio.PlaySoundEffect(_uiSoundEffect);
             _pausePanel.IsVisible = false;
         };
-        _quitButton.Click += (object _, EventArgs _) => {
+        _quitButton.Click += (object _, EventArgs _) =>
+        {
             Core.IsPaused = false; Core.Audio.PlaySoundEffect(_uiSoundEffect);
             Core.Scenes.ChangeScene(new TitleScene(Core.Content));
         };

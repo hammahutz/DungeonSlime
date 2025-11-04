@@ -53,7 +53,6 @@ public partial class TitleUI
         _startButton.IsFocused = true;
     }
 
-
     private void CreateOptionsPanel()
     {
         _optionsPanel = new Panel();
@@ -102,7 +101,5 @@ public partial class TitleUI
         _optionsBackButton.Y = -10f;
         _optionsPanel.AddChild(_optionsBackButton);
     }
-
-
 
 }

@@ -1,15 +1,13 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-
 using DungeonSlime.Engine;
 using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Scenes;
-
-using DungeonSlime.Scenes.Game;
 using DungeonSlime.Engine.UI;
+using DungeonSlime.Scenes.Game;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 
 namespace DungeonSlime.Scenes.Title;
@@ -37,7 +35,7 @@ public class TitleScene : Scene
     private Texture2D _backgroundPattern;
     private Rectangle _backgroundDestination;
     private Vector2 _backgroundOffset;
-    private float _scollSpeed = 50.0f;
+    private readonly float _scollSpeed = 50.0f;
 
     protected override BaseUI UI => new TitleUI(Content);
 

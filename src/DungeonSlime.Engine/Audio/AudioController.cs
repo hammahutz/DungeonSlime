@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 
@@ -9,7 +10,7 @@ public class AudioController : IDisposable
 {
     private readonly List<SoundEffectInstance> _activeSoundEffectIntances;
     private float _previousSongVolume;
-    private float _previousSoundEffectVolume;
+    private readonly float _previousSoundEffectVolume;
 
     public bool IsDisposed { get; private set; }
     public bool IsMuted { get; private set; }

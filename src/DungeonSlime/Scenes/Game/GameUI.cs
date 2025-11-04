@@ -29,5 +29,4 @@ public partial class GameUI : Engine.UI.BaseUI
 
         _animatedButtonFactory = new AnimatedButtonFactory(_textureAtlas, enableButton, focusButton);
     }
-
 }

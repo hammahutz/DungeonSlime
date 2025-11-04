@@ -5,6 +5,7 @@ using DungeonSlime.Engine.Input.Commands;
 using DungeonSlime.Engine.Scenes;
 using DungeonSlime.Engine.UI;
 using DungeonSlime.Engine.Utils.Logging;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -20,11 +21,11 @@ public class GameScene : Scene
     private Vector2 _slimeVelocity = new(0, 0);
 
     private GameUI _ui;
-
     private Tilemap _tilemap;
+
     protected override BaseUI UI => _ui;
 
-    public GameScene(ContentManager content) : base(content) {}
+    public GameScene(ContentManager content) : base(content) { }
 
     public override void LoadContent()
     {

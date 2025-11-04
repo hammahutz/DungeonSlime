@@ -20,4 +20,5 @@ public class FileOutput : ILogOutput
         var logEntry = $"{message}{Environment.NewLine}";
         System.IO.File.AppendAllText(_filePath, logEntry);
     }
+
 }

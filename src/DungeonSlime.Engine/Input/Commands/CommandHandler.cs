@@ -5,7 +5,6 @@ namespace DungeonSlime.Engine.Input.Commands;
 
 public class CommandHandler
 {
-
     public List<Command<KeyboardState, Keys>> KeyboardCommands { get; private set; }
     public List<Command<MouseState, MouseButton>> MouseCommands { get; private set; }
     public List<Command<GamePadState, Buttons>> GamePadCommands { get; private set; }

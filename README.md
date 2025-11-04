@@ -1,5 +1,3 @@
 # DungeonSlime
 
 Monogame Tutorial
-
-Hello

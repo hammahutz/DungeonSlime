@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework.Input;
 
-
 namespace DungeonSlime.Engine.Input;
 
 public class KeyboardInfo : InputInfo<KeyboardState, Keys>

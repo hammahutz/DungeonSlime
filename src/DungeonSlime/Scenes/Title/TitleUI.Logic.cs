@@ -52,5 +52,4 @@ public partial class TitleUI
 
         _optionsButton.IsFocused = true;
     }
-
 }

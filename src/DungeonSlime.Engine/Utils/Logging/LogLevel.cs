@@ -8,4 +8,5 @@ public enum LogLevel
     Debug,
     Info,
     Trace,
+
 }

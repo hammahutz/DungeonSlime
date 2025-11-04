@@ -73,6 +73,5 @@ public partial class GameUI
         _quitButton.Width = 80;
 
         _pausePanel.AddChild(_quitButton);
-
     }
 }

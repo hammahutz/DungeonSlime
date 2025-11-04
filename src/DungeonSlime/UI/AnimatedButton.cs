@@ -1,7 +1,6 @@
 using System;
 
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using DungeonSlime.Engine.Graphics;
 
 using Gum.DataTypes;
 using Gum.DataTypes.Variables;
@@ -11,7 +10,8 @@ using Gum.Graphics.Animation;
 using Gum.Managers;
 using Gum.Wireframe;
 
-using DungeonSlime.Engine.Graphics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 using MonoGameGum.GueDeriving;
 
@@ -241,4 +241,3 @@ class AnimationAnimationChain : BaseAnimationChain
         return animations;
     }
 }
-

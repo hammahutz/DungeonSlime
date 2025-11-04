@@ -3,7 +3,6 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-
 namespace DungeonSlime.Engine.Input;
 
 public class GamePadInfo : InputInfo<GamePadState, Buttons>

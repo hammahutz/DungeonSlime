@@ -1,14 +1,14 @@
 using System;
 
+using DungeonSlime.Engine.Audio;
+using DungeonSlime.Engine.Input;
+using DungeonSlime.Engine.Scenes;
+using DungeonSlime.Engine.UI;
+using DungeonSlime.Engine.Utils.Logging;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-
-using DungeonSlime.Engine.Audio;
-using DungeonSlime.Engine.Input;
-using DungeonSlime.Engine.Utils.Logging;
-using DungeonSlime.Engine.Scenes;
-using DungeonSlime.Engine.UI;
 
 namespace DungeonSlime.Engine;
 
@@ -29,7 +29,7 @@ public abstract class Core : Game
     public static SceneDirector Scenes { get; private set; }
     public static GumUi UI { get; private set; }
 
-    public static bool ExitOnEscape { get; private set;}
+    public static bool ExitOnEscape { get; private set; }
     public static bool IsPaused { get; set; }
 
     public Core(string title, int width = 800, int height = 600, bool fullScreen = false)
@@ -93,7 +93,7 @@ public abstract class Core : Game
     {
         Audio.Update();
         UI.Update(gameTime);
-        
+
         if (!IsPaused)
         {
             Input.Update(gameTime);
